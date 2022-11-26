@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+
+    {
+        "type": "cortex-debug",
+        "request": "attach",
+        "servertype": "openocd",
+        "configFiles": [
+            "interface/stlink.cfg",
+            "target/stm32l4x.cfg"
+        ],
+        // "servertype": "external",
+        // "gdbTarget": "*:8000",
+        "cwd": "${workspaceRoot}",
+        "executable": "${workspaceRoot}/build/SD_Logger_Test.elf",
+        "name": "Debug",
+        "device": "STM32L412RB",
+        // "runToEntryPoint": "main",
+
+        // "preLaunchTask": "debug"
+        "svdFile": "${workspaceRoot}/stm32L4x2.svd",
+        "armToolchainPath": "C:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin",
+        "configFiles": [
+            "C:/OpenOCD-20211118-0.11.0/share/openocd/scripts/interface/stlink-v2-1.cfg",
+            "C:/OpenOCD-20211118-0.11.0/share/openocd/scripts/target/stm32l4x.cfg"
+        ]
+        }
+    ]
+}
