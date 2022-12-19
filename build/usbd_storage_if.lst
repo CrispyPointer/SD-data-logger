@@ -1,0 +1,693 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"usbd_storage_if.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.STORAGE_GetCapacity_FS,"ax",%progbits
+  18              		.align	1
+  19              		.arch armv7e-m
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	STORAGE_GetCapacity_FS:
+  26              	.LVL0:
+  27              	.LFB137:
+  28              		.file 1 "USB_DEVICE/App/usbd_storage_if.c"
+   1:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE BEGIN Header */
+   2:USB_DEVICE/App/usbd_storage_if.c **** /**
+   3:USB_DEVICE/App/usbd_storage_if.c ****   ******************************************************************************
+   4:USB_DEVICE/App/usbd_storage_if.c ****   * @file           : usbd_storage_if.c
+   5:USB_DEVICE/App/usbd_storage_if.c ****   * @version        : v2.0_Cube
+   6:USB_DEVICE/App/usbd_storage_if.c ****   * @brief          : Memory management layer.
+   7:USB_DEVICE/App/usbd_storage_if.c ****   ******************************************************************************
+   8:USB_DEVICE/App/usbd_storage_if.c ****   * @attention
+   9:USB_DEVICE/App/usbd_storage_if.c ****   *
+  10:USB_DEVICE/App/usbd_storage_if.c ****   * Copyright (c) 2022 STMicroelectronics.
+  11:USB_DEVICE/App/usbd_storage_if.c ****   * All rights reserved.
+  12:USB_DEVICE/App/usbd_storage_if.c ****   *
+  13:USB_DEVICE/App/usbd_storage_if.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  14:USB_DEVICE/App/usbd_storage_if.c ****   * in the root directory of this software component.
+  15:USB_DEVICE/App/usbd_storage_if.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  16:USB_DEVICE/App/usbd_storage_if.c ****   *
+  17:USB_DEVICE/App/usbd_storage_if.c ****   ******************************************************************************
+  18:USB_DEVICE/App/usbd_storage_if.c ****   */
+  19:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE END Header */
+  20:USB_DEVICE/App/usbd_storage_if.c **** 
+  21:USB_DEVICE/App/usbd_storage_if.c **** /* Includes ------------------------------------------------------------------*/
+  22:USB_DEVICE/App/usbd_storage_if.c **** #include "usbd_storage_if.h"
+  23:USB_DEVICE/App/usbd_storage_if.c **** 
+  24:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE BEGIN INCLUDE */
+  25:USB_DEVICE/App/usbd_storage_if.c **** #include "user_diskio_spi.h"
+  26:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE END INCLUDE */
+  27:USB_DEVICE/App/usbd_storage_if.c **** 
+  28:USB_DEVICE/App/usbd_storage_if.c **** /* Private typedef -----------------------------------------------------------*/
+  29:USB_DEVICE/App/usbd_storage_if.c **** /* Private define ------------------------------------------------------------*/
+  30:USB_DEVICE/App/usbd_storage_if.c **** /* Private macro -------------------------------------------------------------*/
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s 			page 2
+
+
+  31:USB_DEVICE/App/usbd_storage_if.c **** 
+  32:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE BEGIN PV */
+  33:USB_DEVICE/App/usbd_storage_if.c **** /* Private variables ---------------------------------------------------------*/
+  34:USB_DEVICE/App/usbd_storage_if.c **** //some variables for FatFs
+  35:USB_DEVICE/App/usbd_storage_if.c **** FATFS USBFatFs; //Fatfs handle
+  36:USB_DEVICE/App/usbd_storage_if.c **** FIL USBFile;		//File handle
+  37:USB_DEVICE/App/usbd_storage_if.c **** FRESULT fres;   //Result after operations
+  38:USB_DEVICE/App/usbd_storage_if.c **** DWORD free_clusters, free_sectors, total_sectors;
+  39:USB_DEVICE/App/usbd_storage_if.c **** FATFS* getFreeFs;
+  40:USB_DEVICE/App/usbd_storage_if.c **** char USBPATH[4];  /* USBH logical drive path */
+  41:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE END PV */
+  42:USB_DEVICE/App/usbd_storage_if.c **** 
+  43:USB_DEVICE/App/usbd_storage_if.c **** /** @addtogroup STM32_USB_OTG_DEVICE_LIBRARY
+  44:USB_DEVICE/App/usbd_storage_if.c ****   * @brief Usb device.
+  45:USB_DEVICE/App/usbd_storage_if.c ****   * @{
+  46:USB_DEVICE/App/usbd_storage_if.c ****   */
+  47:USB_DEVICE/App/usbd_storage_if.c **** 
+  48:USB_DEVICE/App/usbd_storage_if.c **** /** @defgroup USBD_STORAGE
+  49:USB_DEVICE/App/usbd_storage_if.c ****   * @brief Usb mass storage device module
+  50:USB_DEVICE/App/usbd_storage_if.c ****   * @{
+  51:USB_DEVICE/App/usbd_storage_if.c ****   */
+  52:USB_DEVICE/App/usbd_storage_if.c **** 
+  53:USB_DEVICE/App/usbd_storage_if.c **** /** @defgroup USBD_STORAGE_Private_TypesDefinitions
+  54:USB_DEVICE/App/usbd_storage_if.c ****   * @brief Private types.
+  55:USB_DEVICE/App/usbd_storage_if.c ****   * @{
+  56:USB_DEVICE/App/usbd_storage_if.c ****   */
+  57:USB_DEVICE/App/usbd_storage_if.c **** 
+  58:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE BEGIN PRIVATE_TYPES */
+  59:USB_DEVICE/App/usbd_storage_if.c **** 
+  60:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE END PRIVATE_TYPES */
+  61:USB_DEVICE/App/usbd_storage_if.c **** 
+  62:USB_DEVICE/App/usbd_storage_if.c **** /**
+  63:USB_DEVICE/App/usbd_storage_if.c ****   * @}
+  64:USB_DEVICE/App/usbd_storage_if.c ****   */
+  65:USB_DEVICE/App/usbd_storage_if.c **** 
+  66:USB_DEVICE/App/usbd_storage_if.c **** /** @defgroup USBD_STORAGE_Private_Defines
+  67:USB_DEVICE/App/usbd_storage_if.c ****   * @brief Private defines.
+  68:USB_DEVICE/App/usbd_storage_if.c ****   * @{
+  69:USB_DEVICE/App/usbd_storage_if.c ****   */
+  70:USB_DEVICE/App/usbd_storage_if.c **** 
+  71:USB_DEVICE/App/usbd_storage_if.c **** #define STORAGE_LUN_NBR                  1
+  72:USB_DEVICE/App/usbd_storage_if.c **** #define STORAGE_BLK_NBR                  0x10000
+  73:USB_DEVICE/App/usbd_storage_if.c **** #define STORAGE_BLK_SIZ                  0x200
+  74:USB_DEVICE/App/usbd_storage_if.c **** 
+  75:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE BEGIN PRIVATE_DEFINES */
+  76:USB_DEVICE/App/usbd_storage_if.c **** //#define STORAGE_BLK_NBR                  0x75BE80 //4GB SD card
+  77:USB_DEVICE/App/usbd_storage_if.c **** #define STORAGE_BLK_NBR                  0x100000 //512MB SD NAND
+  78:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE END PRIVATE_DEFINES */
+  79:USB_DEVICE/App/usbd_storage_if.c **** 
+  80:USB_DEVICE/App/usbd_storage_if.c **** /**
+  81:USB_DEVICE/App/usbd_storage_if.c ****   * @}
+  82:USB_DEVICE/App/usbd_storage_if.c ****   */
+  83:USB_DEVICE/App/usbd_storage_if.c **** 
+  84:USB_DEVICE/App/usbd_storage_if.c **** /** @defgroup USBD_STORAGE_Private_Macros
+  85:USB_DEVICE/App/usbd_storage_if.c ****   * @brief Private macros.
+  86:USB_DEVICE/App/usbd_storage_if.c ****   * @{
+  87:USB_DEVICE/App/usbd_storage_if.c ****   */
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s 			page 3
+
+
+  88:USB_DEVICE/App/usbd_storage_if.c **** 
+  89:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE BEGIN PRIVATE_MACRO */
+  90:USB_DEVICE/App/usbd_storage_if.c **** 
+  91:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE END PRIVATE_MACRO */
+  92:USB_DEVICE/App/usbd_storage_if.c **** 
+  93:USB_DEVICE/App/usbd_storage_if.c **** /**
+  94:USB_DEVICE/App/usbd_storage_if.c ****   * @}
+  95:USB_DEVICE/App/usbd_storage_if.c ****   */
+  96:USB_DEVICE/App/usbd_storage_if.c **** 
+  97:USB_DEVICE/App/usbd_storage_if.c **** /** @defgroup USBD_STORAGE_Private_Variables
+  98:USB_DEVICE/App/usbd_storage_if.c ****   * @brief Private variables.
+  99:USB_DEVICE/App/usbd_storage_if.c ****   * @{
+ 100:USB_DEVICE/App/usbd_storage_if.c ****   */
+ 101:USB_DEVICE/App/usbd_storage_if.c **** 
+ 102:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE BEGIN INQUIRY_DATA_FS */
+ 103:USB_DEVICE/App/usbd_storage_if.c **** /** USB Mass storage Standard Inquiry Data. */
+ 104:USB_DEVICE/App/usbd_storage_if.c **** const int8_t STORAGE_Inquirydata_FS[] = {/* 36 */
+ 105:USB_DEVICE/App/usbd_storage_if.c **** 
+ 106:USB_DEVICE/App/usbd_storage_if.c ****   /* LUN 0 */
+ 107:USB_DEVICE/App/usbd_storage_if.c ****   0x00,
+ 108:USB_DEVICE/App/usbd_storage_if.c ****   0x80,
+ 109:USB_DEVICE/App/usbd_storage_if.c ****   0x02,
+ 110:USB_DEVICE/App/usbd_storage_if.c ****   0x02,
+ 111:USB_DEVICE/App/usbd_storage_if.c ****   (STANDARD_INQUIRY_DATA_LEN - 5),
+ 112:USB_DEVICE/App/usbd_storage_if.c ****   0x00,
+ 113:USB_DEVICE/App/usbd_storage_if.c ****   0x00,
+ 114:USB_DEVICE/App/usbd_storage_if.c ****   0x00,
+ 115:USB_DEVICE/App/usbd_storage_if.c ****   'S', 'T', 'M', ' ', ' ', ' ', ' ', ' ', /* Manufacturer : 8 bytes */
+ 116:USB_DEVICE/App/usbd_storage_if.c ****   'P', 'r', 'o', 'd', 'u', 'c', 't', ' ', /* Product      : 16 Bytes */
+ 117:USB_DEVICE/App/usbd_storage_if.c ****   ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+ 118:USB_DEVICE/App/usbd_storage_if.c ****   '0', '.', '0' ,'1'                      /* Version      : 4 Bytes */
+ 119:USB_DEVICE/App/usbd_storage_if.c **** };
+ 120:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE END INQUIRY_DATA_FS */
+ 121:USB_DEVICE/App/usbd_storage_if.c **** 
+ 122:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE BEGIN PRIVATE_VARIABLES */
+ 123:USB_DEVICE/App/usbd_storage_if.c **** 
+ 124:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE END PRIVATE_VARIABLES */
+ 125:USB_DEVICE/App/usbd_storage_if.c **** 
+ 126:USB_DEVICE/App/usbd_storage_if.c **** /**
+ 127:USB_DEVICE/App/usbd_storage_if.c ****   * @}
+ 128:USB_DEVICE/App/usbd_storage_if.c ****   */
+ 129:USB_DEVICE/App/usbd_storage_if.c **** 
+ 130:USB_DEVICE/App/usbd_storage_if.c **** /** @defgroup USBD_STORAGE_Exported_Variables
+ 131:USB_DEVICE/App/usbd_storage_if.c ****   * @brief Public variables.
+ 132:USB_DEVICE/App/usbd_storage_if.c ****   * @{
+ 133:USB_DEVICE/App/usbd_storage_if.c ****   */
+ 134:USB_DEVICE/App/usbd_storage_if.c **** 
+ 135:USB_DEVICE/App/usbd_storage_if.c **** extern USBD_HandleTypeDef hUsbDeviceFS;
+ 136:USB_DEVICE/App/usbd_storage_if.c **** 
+ 137:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE BEGIN EXPORTED_VARIABLES */
+ 138:USB_DEVICE/App/usbd_storage_if.c **** 
+ 139:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE END EXPORTED_VARIABLES */
+ 140:USB_DEVICE/App/usbd_storage_if.c **** 
+ 141:USB_DEVICE/App/usbd_storage_if.c **** /**
+ 142:USB_DEVICE/App/usbd_storage_if.c ****   * @}
+ 143:USB_DEVICE/App/usbd_storage_if.c ****   */
+ 144:USB_DEVICE/App/usbd_storage_if.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s 			page 4
+
+
+ 145:USB_DEVICE/App/usbd_storage_if.c **** /** @defgroup USBD_STORAGE_Private_FunctionPrototypes
+ 146:USB_DEVICE/App/usbd_storage_if.c ****   * @brief Private functions declaration.
+ 147:USB_DEVICE/App/usbd_storage_if.c ****   * @{
+ 148:USB_DEVICE/App/usbd_storage_if.c ****   */
+ 149:USB_DEVICE/App/usbd_storage_if.c **** 
+ 150:USB_DEVICE/App/usbd_storage_if.c **** static int8_t STORAGE_Init_FS(uint8_t lun);
+ 151:USB_DEVICE/App/usbd_storage_if.c **** static int8_t STORAGE_GetCapacity_FS(uint8_t lun, uint32_t *block_num, uint16_t *block_size);
+ 152:USB_DEVICE/App/usbd_storage_if.c **** static int8_t STORAGE_IsReady_FS(uint8_t lun);
+ 153:USB_DEVICE/App/usbd_storage_if.c **** static int8_t STORAGE_IsWriteProtected_FS(uint8_t lun);
+ 154:USB_DEVICE/App/usbd_storage_if.c **** static int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len);
+ 155:USB_DEVICE/App/usbd_storage_if.c **** static int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len);
+ 156:USB_DEVICE/App/usbd_storage_if.c **** static int8_t STORAGE_GetMaxLun_FS(void);
+ 157:USB_DEVICE/App/usbd_storage_if.c **** 
+ 158:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE BEGIN PRIVATE_FUNCTIONS_DECLARATION */
+ 159:USB_DEVICE/App/usbd_storage_if.c **** 
+ 160:USB_DEVICE/App/usbd_storage_if.c **** /* USER CODE END PRIVATE_FUNCTIONS_DECLARATION */
+ 161:USB_DEVICE/App/usbd_storage_if.c **** 
+ 162:USB_DEVICE/App/usbd_storage_if.c **** /**
+ 163:USB_DEVICE/App/usbd_storage_if.c ****   * @}
+ 164:USB_DEVICE/App/usbd_storage_if.c ****   */
+ 165:USB_DEVICE/App/usbd_storage_if.c **** 
+ 166:USB_DEVICE/App/usbd_storage_if.c **** USBD_StorageTypeDef USBD_Storage_Interface_fops_FS =
+ 167:USB_DEVICE/App/usbd_storage_if.c **** {
+ 168:USB_DEVICE/App/usbd_storage_if.c ****   STORAGE_Init_FS,
+ 169:USB_DEVICE/App/usbd_storage_if.c ****   STORAGE_GetCapacity_FS,
+ 170:USB_DEVICE/App/usbd_storage_if.c ****   STORAGE_IsReady_FS,
+ 171:USB_DEVICE/App/usbd_storage_if.c ****   STORAGE_IsWriteProtected_FS,
+ 172:USB_DEVICE/App/usbd_storage_if.c ****   STORAGE_Read_FS,
+ 173:USB_DEVICE/App/usbd_storage_if.c ****   STORAGE_Write_FS,
+ 174:USB_DEVICE/App/usbd_storage_if.c ****   STORAGE_GetMaxLun_FS,
+ 175:USB_DEVICE/App/usbd_storage_if.c ****   (int8_t *)STORAGE_Inquirydata_FS
+ 176:USB_DEVICE/App/usbd_storage_if.c **** };
+ 177:USB_DEVICE/App/usbd_storage_if.c **** 
+ 178:USB_DEVICE/App/usbd_storage_if.c **** /* Private functions ---------------------------------------------------------*/
+ 179:USB_DEVICE/App/usbd_storage_if.c **** /**
+ 180:USB_DEVICE/App/usbd_storage_if.c ****   * @brief  Initializes over USB FS IP
+ 181:USB_DEVICE/App/usbd_storage_if.c ****   * @param  lun:
+ 182:USB_DEVICE/App/usbd_storage_if.c ****   * @retval USBD_OK if all operations are OK else USBD_FAIL
+ 183:USB_DEVICE/App/usbd_storage_if.c ****   */
+ 184:USB_DEVICE/App/usbd_storage_if.c **** int8_t STORAGE_Init_FS(uint8_t lun)
+ 185:USB_DEVICE/App/usbd_storage_if.c **** {
+ 186:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 2 */
+ 187:USB_DEVICE/App/usbd_storage_if.c ****   USBD_StatusTypeDef ret = USBD_FAIL;
+ 188:USB_DEVICE/App/usbd_storage_if.c ****   if(USER_SPI_initialize(0) == 0){
+ 189:USB_DEVICE/App/usbd_storage_if.c ****     ret = USBD_OK;
+ 190:USB_DEVICE/App/usbd_storage_if.c ****   }
+ 191:USB_DEVICE/App/usbd_storage_if.c ****   return (USBD_OK);
+ 192:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE END 2 */
+ 193:USB_DEVICE/App/usbd_storage_if.c **** }
+ 194:USB_DEVICE/App/usbd_storage_if.c **** 
+ 195:USB_DEVICE/App/usbd_storage_if.c **** /**
+ 196:USB_DEVICE/App/usbd_storage_if.c ****   * @brief  .
+ 197:USB_DEVICE/App/usbd_storage_if.c ****   * @param  lun: .
+ 198:USB_DEVICE/App/usbd_storage_if.c ****   * @param  block_num: .
+ 199:USB_DEVICE/App/usbd_storage_if.c ****   * @param  block_size: .
+ 200:USB_DEVICE/App/usbd_storage_if.c ****   * @retval USBD_OK if all operations are OK else USBD_FAIL
+ 201:USB_DEVICE/App/usbd_storage_if.c ****   */
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s 			page 5
+
+
+ 202:USB_DEVICE/App/usbd_storage_if.c **** int8_t STORAGE_GetCapacity_FS(uint8_t lun, uint32_t *block_num, uint16_t *block_size)
+ 203:USB_DEVICE/App/usbd_storage_if.c **** {
+  29              		.loc 1 203 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+ 204:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 3 */
+ 205:USB_DEVICE/App/usbd_storage_if.c ****   //fres = f_getfree((TCHAR const *) USBPATH, &free_clusters, &getFreeFs);
+ 206:USB_DEVICE/App/usbd_storage_if.c ****   *block_num  = STORAGE_BLK_NBR;
+  34              		.loc 1 206 3 view .LVU1
+  35              		.loc 1 206 15 is_stmt 0 view .LVU2
+  36 0000 4FF48013 		mov	r3, #1048576
+  37 0004 0B60     		str	r3, [r1]
+ 207:USB_DEVICE/App/usbd_storage_if.c ****   *block_size = STORAGE_BLK_SIZ;
+  38              		.loc 1 207 3 is_stmt 1 view .LVU3
+  39              		.loc 1 207 15 is_stmt 0 view .LVU4
+  40 0006 4FF40073 		mov	r3, #512
+  41 000a 1380     		strh	r3, [r2]	@ movhi
+ 208:USB_DEVICE/App/usbd_storage_if.c ****   return (USBD_OK);
+  42              		.loc 1 208 3 is_stmt 1 view .LVU5
+ 209:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE END 3 */
+ 210:USB_DEVICE/App/usbd_storage_if.c **** }
+  43              		.loc 1 210 1 is_stmt 0 view .LVU6
+  44 000c 0020     		movs	r0, #0
+  45              	.LVL1:
+  46              		.loc 1 210 1 view .LVU7
+  47 000e 7047     		bx	lr
+  48              		.cfi_endproc
+  49              	.LFE137:
+  51              		.section	.text.STORAGE_IsWriteProtected_FS,"ax",%progbits
+  52              		.align	1
+  53              		.syntax unified
+  54              		.thumb
+  55              		.thumb_func
+  56              		.fpu fpv4-sp-d16
+  58              	STORAGE_IsWriteProtected_FS:
+  59              	.LVL2:
+  60              	.LFB139:
+ 211:USB_DEVICE/App/usbd_storage_if.c **** 
+ 212:USB_DEVICE/App/usbd_storage_if.c **** /**
+ 213:USB_DEVICE/App/usbd_storage_if.c ****   * @brief  .
+ 214:USB_DEVICE/App/usbd_storage_if.c ****   * @param  lun: .
+ 215:USB_DEVICE/App/usbd_storage_if.c ****   * @retval USBD_OK if all operations are OK else USBD_FAIL
+ 216:USB_DEVICE/App/usbd_storage_if.c ****   */
+ 217:USB_DEVICE/App/usbd_storage_if.c **** int8_t STORAGE_IsReady_FS(uint8_t lun)
+ 218:USB_DEVICE/App/usbd_storage_if.c **** {
+ 219:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 4 */
+ 220:USB_DEVICE/App/usbd_storage_if.c ****   USBD_StatusTypeDef ret = USBD_FAIL;
+ 221:USB_DEVICE/App/usbd_storage_if.c **** 	  if(USER_SPI_status(0) == 0){
+ 222:USB_DEVICE/App/usbd_storage_if.c **** 		  ret = USBD_OK;
+ 223:USB_DEVICE/App/usbd_storage_if.c **** 	  }
+ 224:USB_DEVICE/App/usbd_storage_if.c **** 	  return ret;
+ 225:USB_DEVICE/App/usbd_storage_if.c ****   return (USBD_OK);
+ 226:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE END 4 */
+ 227:USB_DEVICE/App/usbd_storage_if.c **** }
+ 228:USB_DEVICE/App/usbd_storage_if.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s 			page 6
+
+
+ 229:USB_DEVICE/App/usbd_storage_if.c **** /**
+ 230:USB_DEVICE/App/usbd_storage_if.c ****   * @brief  .
+ 231:USB_DEVICE/App/usbd_storage_if.c ****   * @param  lun: .
+ 232:USB_DEVICE/App/usbd_storage_if.c ****   * @retval USBD_OK if all operations are OK else USBD_FAIL
+ 233:USB_DEVICE/App/usbd_storage_if.c ****   */
+ 234:USB_DEVICE/App/usbd_storage_if.c **** int8_t STORAGE_IsWriteProtected_FS(uint8_t lun)
+ 235:USB_DEVICE/App/usbd_storage_if.c **** {
+  61              		.loc 1 235 1 is_stmt 1 view -0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65              		@ link register save eliminated.
+ 236:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 5 */
+ 237:USB_DEVICE/App/usbd_storage_if.c ****   return (USBD_OK);
+  66              		.loc 1 237 3 view .LVU9
+ 238:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE END 5 */
+ 239:USB_DEVICE/App/usbd_storage_if.c **** }
+  67              		.loc 1 239 1 is_stmt 0 view .LVU10
+  68 0000 0020     		movs	r0, #0
+  69              	.LVL3:
+  70              		.loc 1 239 1 view .LVU11
+  71 0002 7047     		bx	lr
+  72              		.cfi_endproc
+  73              	.LFE139:
+  75              		.section	.text.STORAGE_GetMaxLun_FS,"ax",%progbits
+  76              		.align	1
+  77              		.syntax unified
+  78              		.thumb
+  79              		.thumb_func
+  80              		.fpu fpv4-sp-d16
+  82              	STORAGE_GetMaxLun_FS:
+  83              	.LFB142:
+ 240:USB_DEVICE/App/usbd_storage_if.c **** 
+ 241:USB_DEVICE/App/usbd_storage_if.c **** /**
+ 242:USB_DEVICE/App/usbd_storage_if.c ****   * @brief  .
+ 243:USB_DEVICE/App/usbd_storage_if.c ****   * @param  lun: .
+ 244:USB_DEVICE/App/usbd_storage_if.c ****   * @retval USBD_OK if all operations are OK else USBD_FAIL
+ 245:USB_DEVICE/App/usbd_storage_if.c ****   */
+ 246:USB_DEVICE/App/usbd_storage_if.c **** int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
+ 247:USB_DEVICE/App/usbd_storage_if.c **** {
+ 248:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 6 */
+ 249:USB_DEVICE/App/usbd_storage_if.c ****   USBD_StatusTypeDef ret = USBD_FAIL;
+ 250:USB_DEVICE/App/usbd_storage_if.c ****   if(USER_SPI_read(0, buf, blk_addr,blk_len) == 0)
+ 251:USB_DEVICE/App/usbd_storage_if.c **** 	  ret = USBD_OK;
+ 252:USB_DEVICE/App/usbd_storage_if.c ****   return ret;
+ 253:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE END 6 */
+ 254:USB_DEVICE/App/usbd_storage_if.c **** }
+ 255:USB_DEVICE/App/usbd_storage_if.c **** 
+ 256:USB_DEVICE/App/usbd_storage_if.c **** /**
+ 257:USB_DEVICE/App/usbd_storage_if.c ****   * @brief  .
+ 258:USB_DEVICE/App/usbd_storage_if.c ****   * @param  lun: .
+ 259:USB_DEVICE/App/usbd_storage_if.c ****   * @retval USBD_OK if all operations are OK else USBD_FAIL
+ 260:USB_DEVICE/App/usbd_storage_if.c ****   */
+ 261:USB_DEVICE/App/usbd_storage_if.c **** int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
+ 262:USB_DEVICE/App/usbd_storage_if.c **** {
+ 263:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 7 */
+ 264:USB_DEVICE/App/usbd_storage_if.c ****   USBD_StatusTypeDef ret = USBD_FAIL;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s 			page 7
+
+
+ 265:USB_DEVICE/App/usbd_storage_if.c ****   if(USER_SPI_write(0, buf, blk_addr,blk_len) == 0)
+ 266:USB_DEVICE/App/usbd_storage_if.c **** 	  ret = USBD_OK;
+ 267:USB_DEVICE/App/usbd_storage_if.c ****   return ret;
+ 268:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE END 7 */
+ 269:USB_DEVICE/App/usbd_storage_if.c **** }
+ 270:USB_DEVICE/App/usbd_storage_if.c **** 
+ 271:USB_DEVICE/App/usbd_storage_if.c **** /**
+ 272:USB_DEVICE/App/usbd_storage_if.c ****   * @brief  .
+ 273:USB_DEVICE/App/usbd_storage_if.c ****   * @param  None
+ 274:USB_DEVICE/App/usbd_storage_if.c ****   * @retval .
+ 275:USB_DEVICE/App/usbd_storage_if.c ****   */
+ 276:USB_DEVICE/App/usbd_storage_if.c **** int8_t STORAGE_GetMaxLun_FS(void)
+ 277:USB_DEVICE/App/usbd_storage_if.c **** {
+  84              		.loc 1 277 1 is_stmt 1 view -0
+  85              		.cfi_startproc
+  86              		@ args = 0, pretend = 0, frame = 0
+  87              		@ frame_needed = 0, uses_anonymous_args = 0
+  88              		@ link register save eliminated.
+ 278:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 8 */
+ 279:USB_DEVICE/App/usbd_storage_if.c ****   return (STORAGE_LUN_NBR - 1);
+  89              		.loc 1 279 3 view .LVU13
+ 280:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE END 8 */
+ 281:USB_DEVICE/App/usbd_storage_if.c **** }
+  90              		.loc 1 281 1 is_stmt 0 view .LVU14
+  91 0000 0020     		movs	r0, #0
+  92 0002 7047     		bx	lr
+  93              		.cfi_endproc
+  94              	.LFE142:
+  96              		.section	.text.STORAGE_Write_FS,"ax",%progbits
+  97              		.align	1
+  98              		.syntax unified
+  99              		.thumb
+ 100              		.thumb_func
+ 101              		.fpu fpv4-sp-d16
+ 103              	STORAGE_Write_FS:
+ 104              	.LVL4:
+ 105              	.LFB141:
+ 262:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 7 */
+ 106              		.loc 1 262 1 is_stmt 1 view -0
+ 107              		.cfi_startproc
+ 108              		@ args = 0, pretend = 0, frame = 0
+ 109              		@ frame_needed = 0, uses_anonymous_args = 0
+ 262:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 7 */
+ 110              		.loc 1 262 1 is_stmt 0 view .LVU16
+ 111 0000 08B5     		push	{r3, lr}
+ 112              	.LCFI0:
+ 113              		.cfi_def_cfa_offset 8
+ 114              		.cfi_offset 3, -8
+ 115              		.cfi_offset 14, -4
+ 264:USB_DEVICE/App/usbd_storage_if.c ****   if(USER_SPI_write(0, buf, blk_addr,blk_len) == 0)
+ 116              		.loc 1 264 3 is_stmt 1 view .LVU17
+ 117              	.LVL5:
+ 265:USB_DEVICE/App/usbd_storage_if.c **** 	  ret = USBD_OK;
+ 118              		.loc 1 265 3 view .LVU18
+ 265:USB_DEVICE/App/usbd_storage_if.c **** 	  ret = USBD_OK;
+ 119              		.loc 1 265 6 is_stmt 0 view .LVU19
+ 120 0002 0020     		movs	r0, #0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s 			page 8
+
+
+ 121              	.LVL6:
+ 265:USB_DEVICE/App/usbd_storage_if.c **** 	  ret = USBD_OK;
+ 122              		.loc 1 265 6 view .LVU20
+ 123 0004 FFF7FEFF 		bl	USER_SPI_write
+ 124              	.LVL7:
+ 265:USB_DEVICE/App/usbd_storage_if.c **** 	  ret = USBD_OK;
+ 125              		.loc 1 265 5 view .LVU21
+ 126 0008 0346     		mov	r3, r0
+ 127 000a 00B1     		cbz	r0, .L5
+ 264:USB_DEVICE/App/usbd_storage_if.c ****   if(USER_SPI_write(0, buf, blk_addr,blk_len) == 0)
+ 128              		.loc 1 264 22 view .LVU22
+ 129 000c 0323     		movs	r3, #3
+ 130              	.L5:
+ 131              	.LVL8:
+ 267:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE END 7 */
+ 132              		.loc 1 267 3 is_stmt 1 view .LVU23
+ 269:USB_DEVICE/App/usbd_storage_if.c **** 
+ 133              		.loc 1 269 1 is_stmt 0 view .LVU24
+ 134 000e 58B2     		sxtb	r0, r3
+ 135 0010 08BD     		pop	{r3, pc}
+ 269:USB_DEVICE/App/usbd_storage_if.c **** 
+ 136              		.loc 1 269 1 view .LVU25
+ 137              		.cfi_endproc
+ 138              	.LFE141:
+ 140              		.section	.text.STORAGE_Read_FS,"ax",%progbits
+ 141              		.align	1
+ 142              		.syntax unified
+ 143              		.thumb
+ 144              		.thumb_func
+ 145              		.fpu fpv4-sp-d16
+ 147              	STORAGE_Read_FS:
+ 148              	.LVL9:
+ 149              	.LFB140:
+ 247:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 6 */
+ 150              		.loc 1 247 1 is_stmt 1 view -0
+ 151              		.cfi_startproc
+ 152              		@ args = 0, pretend = 0, frame = 0
+ 153              		@ frame_needed = 0, uses_anonymous_args = 0
+ 247:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 6 */
+ 154              		.loc 1 247 1 is_stmt 0 view .LVU27
+ 155 0000 08B5     		push	{r3, lr}
+ 156              	.LCFI1:
+ 157              		.cfi_def_cfa_offset 8
+ 158              		.cfi_offset 3, -8
+ 159              		.cfi_offset 14, -4
+ 249:USB_DEVICE/App/usbd_storage_if.c ****   if(USER_SPI_read(0, buf, blk_addr,blk_len) == 0)
+ 160              		.loc 1 249 3 is_stmt 1 view .LVU28
+ 161              	.LVL10:
+ 250:USB_DEVICE/App/usbd_storage_if.c **** 	  ret = USBD_OK;
+ 162              		.loc 1 250 3 view .LVU29
+ 250:USB_DEVICE/App/usbd_storage_if.c **** 	  ret = USBD_OK;
+ 163              		.loc 1 250 6 is_stmt 0 view .LVU30
+ 164 0002 0020     		movs	r0, #0
+ 165              	.LVL11:
+ 250:USB_DEVICE/App/usbd_storage_if.c **** 	  ret = USBD_OK;
+ 166              		.loc 1 250 6 view .LVU31
+ 167 0004 FFF7FEFF 		bl	USER_SPI_read
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s 			page 9
+
+
+ 168              	.LVL12:
+ 250:USB_DEVICE/App/usbd_storage_if.c **** 	  ret = USBD_OK;
+ 169              		.loc 1 250 5 view .LVU32
+ 170 0008 0346     		mov	r3, r0
+ 171 000a 00B1     		cbz	r0, .L8
+ 249:USB_DEVICE/App/usbd_storage_if.c ****   if(USER_SPI_read(0, buf, blk_addr,blk_len) == 0)
+ 172              		.loc 1 249 22 view .LVU33
+ 173 000c 0323     		movs	r3, #3
+ 174              	.L8:
+ 175              	.LVL13:
+ 252:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE END 6 */
+ 176              		.loc 1 252 3 is_stmt 1 view .LVU34
+ 254:USB_DEVICE/App/usbd_storage_if.c **** 
+ 177              		.loc 1 254 1 is_stmt 0 view .LVU35
+ 178 000e 58B2     		sxtb	r0, r3
+ 179 0010 08BD     		pop	{r3, pc}
+ 254:USB_DEVICE/App/usbd_storage_if.c **** 
+ 180              		.loc 1 254 1 view .LVU36
+ 181              		.cfi_endproc
+ 182              	.LFE140:
+ 184              		.section	.text.STORAGE_IsReady_FS,"ax",%progbits
+ 185              		.align	1
+ 186              		.syntax unified
+ 187              		.thumb
+ 188              		.thumb_func
+ 189              		.fpu fpv4-sp-d16
+ 191              	STORAGE_IsReady_FS:
+ 192              	.LVL14:
+ 193              	.LFB138:
+ 218:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 4 */
+ 194              		.loc 1 218 1 is_stmt 1 view -0
+ 195              		.cfi_startproc
+ 196              		@ args = 0, pretend = 0, frame = 0
+ 197              		@ frame_needed = 0, uses_anonymous_args = 0
+ 218:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 4 */
+ 198              		.loc 1 218 1 is_stmt 0 view .LVU38
+ 199 0000 08B5     		push	{r3, lr}
+ 200              	.LCFI2:
+ 201              		.cfi_def_cfa_offset 8
+ 202              		.cfi_offset 3, -8
+ 203              		.cfi_offset 14, -4
+ 220:USB_DEVICE/App/usbd_storage_if.c **** 	  if(USER_SPI_status(0) == 0){
+ 204              		.loc 1 220 3 is_stmt 1 view .LVU39
+ 205              	.LVL15:
+ 221:USB_DEVICE/App/usbd_storage_if.c **** 		  ret = USBD_OK;
+ 206              		.loc 1 221 4 view .LVU40
+ 221:USB_DEVICE/App/usbd_storage_if.c **** 		  ret = USBD_OK;
+ 207              		.loc 1 221 7 is_stmt 0 view .LVU41
+ 208 0002 0020     		movs	r0, #0
+ 209              	.LVL16:
+ 221:USB_DEVICE/App/usbd_storage_if.c **** 		  ret = USBD_OK;
+ 210              		.loc 1 221 7 view .LVU42
+ 211 0004 FFF7FEFF 		bl	USER_SPI_status
+ 212              	.LVL17:
+ 221:USB_DEVICE/App/usbd_storage_if.c **** 		  ret = USBD_OK;
+ 213              		.loc 1 221 6 view .LVU43
+ 214 0008 0346     		mov	r3, r0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s 			page 10
+
+
+ 215 000a 00B1     		cbz	r0, .L11
+ 220:USB_DEVICE/App/usbd_storage_if.c **** 	  if(USER_SPI_status(0) == 0){
+ 216              		.loc 1 220 22 view .LVU44
+ 217 000c 0323     		movs	r3, #3
+ 218              	.L11:
+ 219              	.LVL18:
+ 224:USB_DEVICE/App/usbd_storage_if.c ****   return (USBD_OK);
+ 220              		.loc 1 224 4 is_stmt 1 view .LVU45
+ 227:USB_DEVICE/App/usbd_storage_if.c **** 
+ 221              		.loc 1 227 1 is_stmt 0 view .LVU46
+ 222 000e 58B2     		sxtb	r0, r3
+ 223 0010 08BD     		pop	{r3, pc}
+ 227:USB_DEVICE/App/usbd_storage_if.c **** 
+ 224              		.loc 1 227 1 view .LVU47
+ 225              		.cfi_endproc
+ 226              	.LFE138:
+ 228              		.section	.text.STORAGE_Init_FS,"ax",%progbits
+ 229              		.align	1
+ 230              		.syntax unified
+ 231              		.thumb
+ 232              		.thumb_func
+ 233              		.fpu fpv4-sp-d16
+ 235              	STORAGE_Init_FS:
+ 236              	.LVL19:
+ 237              	.LFB136:
+ 185:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 2 */
+ 238              		.loc 1 185 1 is_stmt 1 view -0
+ 239              		.cfi_startproc
+ 240              		@ args = 0, pretend = 0, frame = 0
+ 241              		@ frame_needed = 0, uses_anonymous_args = 0
+ 185:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE BEGIN 2 */
+ 242              		.loc 1 185 1 is_stmt 0 view .LVU49
+ 243 0000 08B5     		push	{r3, lr}
+ 244              	.LCFI3:
+ 245              		.cfi_def_cfa_offset 8
+ 246              		.cfi_offset 3, -8
+ 247              		.cfi_offset 14, -4
+ 187:USB_DEVICE/App/usbd_storage_if.c ****   if(USER_SPI_initialize(0) == 0){
+ 248              		.loc 1 187 3 is_stmt 1 view .LVU50
+ 249              	.LVL20:
+ 188:USB_DEVICE/App/usbd_storage_if.c ****     ret = USBD_OK;
+ 250              		.loc 1 188 3 view .LVU51
+ 188:USB_DEVICE/App/usbd_storage_if.c ****     ret = USBD_OK;
+ 251              		.loc 1 188 6 is_stmt 0 view .LVU52
+ 252 0002 0020     		movs	r0, #0
+ 253              	.LVL21:
+ 188:USB_DEVICE/App/usbd_storage_if.c ****     ret = USBD_OK;
+ 254              		.loc 1 188 6 view .LVU53
+ 255 0004 FFF7FEFF 		bl	USER_SPI_initialize
+ 256              	.LVL22:
+ 191:USB_DEVICE/App/usbd_storage_if.c ****   /* USER CODE END 2 */
+ 257              		.loc 1 191 3 is_stmt 1 view .LVU54
+ 193:USB_DEVICE/App/usbd_storage_if.c **** 
+ 258              		.loc 1 193 1 is_stmt 0 view .LVU55
+ 259 0008 0020     		movs	r0, #0
+ 260 000a 08BD     		pop	{r3, pc}
+ 261              		.cfi_endproc
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s 			page 11
+
+
+ 262              	.LFE136:
+ 264              		.global	USBD_Storage_Interface_fops_FS
+ 265              		.global	STORAGE_Inquirydata_FS
+ 266              		.comm	USBPATH,4,4
+ 267              		.comm	getFreeFs,4,4
+ 268              		.comm	total_sectors,4,4
+ 269              		.comm	free_sectors,4,4
+ 270              		.comm	free_clusters,4,4
+ 271              		.comm	fres,1,1
+ 272              		.comm	USBFile,560,4
+ 273              		.comm	USBFatFs,560,4
+ 274              		.section	.data.USBD_Storage_Interface_fops_FS,"aw"
+ 275              		.align	2
+ 278              	USBD_Storage_Interface_fops_FS:
+ 279 0000 00000000 		.word	STORAGE_Init_FS
+ 280 0004 00000000 		.word	STORAGE_GetCapacity_FS
+ 281 0008 00000000 		.word	STORAGE_IsReady_FS
+ 282 000c 00000000 		.word	STORAGE_IsWriteProtected_FS
+ 283 0010 00000000 		.word	STORAGE_Read_FS
+ 284 0014 00000000 		.word	STORAGE_Write_FS
+ 285 0018 00000000 		.word	STORAGE_GetMaxLun_FS
+ 286 001c 00000000 		.word	STORAGE_Inquirydata_FS
+ 287              		.section	.rodata.STORAGE_Inquirydata_FS,"a"
+ 288              		.align	2
+ 291              	STORAGE_Inquirydata_FS:
+ 292 0000 00800202 		.ascii	"\000\200\002\002\037\000\000\000STM     Product    "
+ 292      1F000000 
+ 292      53544D20 
+ 292      20202020 
+ 292      50726F64 
+ 293 001b 20202020 		.ascii	"     0.01"
+ 293      20302E30 
+ 293      31
+ 294              		.text
+ 295              	.Letext0:
+ 296              		.file 2 "c:\\ncs\\v1.7.1\\toolchain\\opt\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 297              		.file 3 "c:\\ncs\\v1.7.1\\toolchain\\opt\\arm-none-eabi\\include\\sys\\lock.h"
+ 298              		.file 4 "c:\\ncs\\v1.7.1\\toolchain\\opt\\arm-none-eabi\\include\\sys\\_types.h"
+ 299              		.file 5 "c:\\ncs\\v1.7.1\\toolchain\\opt\\lib\\gcc\\arm-none-eabi\\9.2.1\\include\\stddef.h"
+ 300              		.file 6 "c:\\ncs\\v1.7.1\\toolchain\\opt\\arm-none-eabi\\include\\sys\\reent.h"
+ 301              		.file 7 "c:\\ncs\\v1.7.1\\toolchain\\opt\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 302              		.file 8 "c:\\ncs\\v1.7.1\\toolchain\\opt\\arm-none-eabi\\include\\stdlib.h"
+ 303              		.file 9 "Drivers/CMSIS/Include/core_cm4.h"
+ 304              		.file 10 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+ 305              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 306              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
+ 307              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+ 308              		.file 14 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h"
+ 309              		.file 15 "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc.h"
+ 310              		.file 16 "USB_DEVICE/App/usbd_storage_if.h"
+ 311              		.file 17 "Middlewares/Third_Party/FatFs/src/integer.h"
+ 312              		.file 18 "Middlewares/Third_Party/FatFs/src/ff.h"
+ 313              		.file 19 "FATFS/Target/user_diskio_spi.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 usbd_storage_if.c
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:18     .text.STORAGE_GetCapacity_FS:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:25     .text.STORAGE_GetCapacity_FS:00000000 STORAGE_GetCapacity_FS
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:52     .text.STORAGE_IsWriteProtected_FS:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:58     .text.STORAGE_IsWriteProtected_FS:00000000 STORAGE_IsWriteProtected_FS
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:76     .text.STORAGE_GetMaxLun_FS:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:82     .text.STORAGE_GetMaxLun_FS:00000000 STORAGE_GetMaxLun_FS
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:97     .text.STORAGE_Write_FS:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:103    .text.STORAGE_Write_FS:00000000 STORAGE_Write_FS
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:141    .text.STORAGE_Read_FS:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:147    .text.STORAGE_Read_FS:00000000 STORAGE_Read_FS
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:185    .text.STORAGE_IsReady_FS:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:191    .text.STORAGE_IsReady_FS:00000000 STORAGE_IsReady_FS
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:229    .text.STORAGE_Init_FS:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:235    .text.STORAGE_Init_FS:00000000 STORAGE_Init_FS
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:278    .data.USBD_Storage_Interface_fops_FS:00000000 USBD_Storage_Interface_fops_FS
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:291    .rodata.STORAGE_Inquirydata_FS:00000000 STORAGE_Inquirydata_FS
+                            *COM*:00000004 USBPATH
+                            *COM*:00000004 getFreeFs
+                            *COM*:00000004 total_sectors
+                            *COM*:00000004 free_sectors
+                            *COM*:00000004 free_clusters
+                            *COM*:00000001 fres
+                            *COM*:00000230 USBFile
+                            *COM*:00000230 USBFatFs
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:275    .data.USBD_Storage_Interface_fops_FS:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccpewSVF.s:288    .rodata.STORAGE_Inquirydata_FS:00000000 $d
+
+UNDEFINED SYMBOLS
+USER_SPI_write
+USER_SPI_read
+USER_SPI_status
+USER_SPI_initialize

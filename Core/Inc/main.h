@@ -4,6 +4,9 @@
   * @file           : main.h
   * @brief          : Header for main.c file.
   *                   This file contains the common defines of the application.
+  *                   Main program for SODAQ LOGGER
+  * @author         : Phuoc K. Ly
+  * @version        : 0.1
   ******************************************************************************
   * @attention
   *
@@ -65,6 +68,8 @@ void Error_Handler(void);
 #define SD_CS_GPIO_Port GPIOB
 #define SD_EN_Pin GPIO_PIN_8
 #define SD_EN_GPIO_Port GPIOA
+#define Vbus_Sense_Pin GPIO_PIN_9
+#define Vbus_Sense_GPIO_Port GPIOA
 #define LED_Pin GPIO_PIN_15
 #define LED_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */

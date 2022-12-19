@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
   27:Core/Src/SPI_FRAM.c **** #include "main.h"
   28:Core/Src/SPI_FRAM.c **** #include "stm32l4xx_hal.h"
   29:Core/Src/SPI_FRAM.c **** 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 2
 
 
   30:Core/Src/SPI_FRAM.c **** /*SPI_FRAM header file*/
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
   38              		.loc 1 75 18 is_stmt 0 view .LVU3
   39 0000 0023     		movs	r3, #0
   40              	.LVL1:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 3
 
 
   76:Core/Src/SPI_FRAM.c ****         i < sizeof(_supported_devices) / sizeof(_supported_devices[0]); i++) {
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
   87              		.loc 1 79 9 is_stmt 1 view .LVU20
   88              		.loc 1 79 37 is_stmt 0 view .LVU21
   89 002e 054B     		ldr	r3, .L13
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 4
 
 
   90              	.LVL4:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
   88:Core/Src/SPI_FRAM.c **** 
   89:Core/Src/SPI_FRAM.c **** //   return 0;
   90:Core/Src/SPI_FRAM.c **** // }
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 5
 
 
   91:Core/Src/SPI_FRAM.c **** 
@@ -246,7 +246,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
   93:Core/Src/SPI_FRAM.c ****  *  @brief  Initializes SPI and configures the chip (call this function before
   94:Core/Src/SPI_FRAM.c ****  *          doing anything else)
   95:Core/Src/SPI_FRAM.c ****  *  @param  nAddressSizeBytes
-  96:Core/Src/SPI_FRAM.c ****  *          sddress size in bytes (default 2)
+  96:Core/Src/SPI_FRAM.c ****  *          address size in bytes (2MByte - 3)
   97:Core/Src/SPI_FRAM.c ****  *  @return true if successful
   98:Core/Src/SPI_FRAM.c ****  */
   99:Core/Src/SPI_FRAM.c **** bool FRAM_begin(uint8_t nAddressSizeBytes) {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  162              	.LVL11:
  163              		.loc 1 119 3 is_stmt 0 view .LVU37
  164 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 6
 
 
  165              	.LVL12:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  124:Core/Src/SPI_FRAM.c **** /*!
  125:Core/Src/SPI_FRAM.c ****  * @brief Enables or disables sleep mode of the FRAM  
  126:Core/Src/SPI_FRAM.c ****  * @param enable
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 7
 
 
  127:Core/Src/SPI_FRAM.c ****  *              True enables sleep, flash disables sleep
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  137:Core/Src/SPI_FRAM.c ****   else{
  138:Core/Src/SPI_FRAM.c ****     CS_LOW();
  139:Core/Src/SPI_FRAM.c ****     HAL_Delay(1);
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 8
 
 
  140:Core/Src/SPI_FRAM.c ****     CS_HIGH();
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  305              		.fpu fpv4-sp-d16
  307              	FRAM_write8:
  308              	.LVL26:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 9
 
 
  309              	.LFB136:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  158:Core/Src/SPI_FRAM.c ****   if (spi_fram._nAddressSizeBytes > 2)
  348              		.loc 1 158 3 is_stmt 1 view .LVU79
  349              		.loc 1 158 6 is_stmt 0 view .LVU80
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 10
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 10
 
 
  350 001a 022B     		cmp	r3, #2
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  398              	.LVL36:
  399              		.loc 1 164 3 view .LVU98
  400 005c FFF7FEFF 		bl	HAL_GPIO_WritePin
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 11
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 11
 
 
  401              	.LVL37:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  171:Core/Src/SPI_FRAM.c ****  *   @brief  Writes string starting at the specific FRAM address
  172:Core/Src/SPI_FRAM.c ****  *   @param addr
  173:Core/Src/SPI_FRAM.c ****  *           The 32-bit address to write to in FRAM memory
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 12
 
 
  174:Core/Src/SPI_FRAM.c ****  *   @param values
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  494 0022 0134     		adds	r4, r4, #1
  495              	.LVL47:
  496              		.loc 1 182 13 view .LVU120
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 13
 
 
  497 0024 F3E7     		b	.L35
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  540              		.cfi_def_cfa_offset 32
  196:Core/Src/SPI_FRAM.c ****   uint8_t buffer[10], val;
  541              		.loc 1 196 3 is_stmt 1 view .LVU129
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 14
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 14
 
 
  197:Core/Src/SPI_FRAM.c ****   uint8_t i = 0;
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  588 0030 C0F30724 		ubfx	r4, r0, #8, #8
  589              		.loc 1 204 15 view .LVU150
  590 0034 04A9     		add	r1, sp, #16
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 15
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 15
 
 
  591 0036 1144     		add	r1, r1, r2
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  635 007e 9DF80300 		ldrb	r0, [sp, #3]	@ zero_extendqisi2
  636 0082 05B0     		add	sp, sp, #20
  637              	.LCFI17:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 16
 
 
  638              		.cfi_remember_state
@@ -941,7 +941,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  223:Core/Src/SPI_FRAM.c **** const char* FRAM_read(uint32_t *addr){
  668              		.loc 1 223 38 is_stmt 1 view -0
  669              		.cfi_startproc
- 670              		@ args = 0, pretend = 0, frame = 304
+ 670              		@ args = 0, pretend = 0, frame = 4096
  671              		@ frame_needed = 0, uses_anonymous_args = 0
  672              		.loc 1 223 38 is_stmt 0 view .LVU165
  673 0000 30B5     		push	{r4, r5, lr}
@@ -950,83 +950,82 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  676              		.cfi_offset 4, -12
  677              		.cfi_offset 5, -8
  678              		.cfi_offset 14, -4
- 679 0002 CDB0     		sub	sp, sp, #308
+ 679 0002 ADF5805D 		sub	sp, sp, #4096
  680              	.LCFI20:
- 681              		.cfi_def_cfa_offset 320
- 682 0004 0546     		mov	r5, r0
+ 681              		.cfi_def_cfa_offset 4108
+ 682 0006 81B0     		sub	sp, sp, #4
+ 683              	.LCFI21:
+ 684              		.cfi_def_cfa_offset 4112
+ 685 0008 0546     		mov	r5, r0
  224:Core/Src/SPI_FRAM.c ****   int index = 0;
- 683              		.loc 1 224 3 is_stmt 1 view .LVU166
- 684              	.LVL64:
- 225:Core/Src/SPI_FRAM.c ****   int buffer_index = *addr;
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 17
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 17
 
 
- 685              		.loc 1 225 3 view .LVU167
- 226:Core/Src/SPI_FRAM.c ****   char value[300] = {'\0'};
- 686              		.loc 1 226 3 view .LVU168
- 687              		.loc 1 226 8 is_stmt 0 view .LVU169
- 688 0006 0024     		movs	r4, #0
- 689 0008 0194     		str	r4, [sp, #4]
- 690              	.LVL65:
- 691              		.loc 1 226 8 view .LVU170
- 692 000a 4FF49472 		mov	r2, #296
- 693 000e 2146     		mov	r1, r4
- 694 0010 02A8     		add	r0, sp, #8
- 695              	.LVL66:
- 696              		.loc 1 226 8 view .LVU171
- 697 0012 FFF7FEFF 		bl	memset
- 698              	.LVL67:
+ 686              		.loc 1 224 3 is_stmt 1 view .LVU166
+ 687              	.LVL64:
+ 225:Core/Src/SPI_FRAM.c ****   char value[4096] = {'\0'};
+ 688              		.loc 1 225 3 view .LVU167
+ 689              		.loc 1 225 8 is_stmt 0 view .LVU168
+ 690 000a 0024     		movs	r4, #0
+ 691 000c 0094     		str	r4, [sp]
+ 692 000e 40F6FC72 		movw	r2, #4092
+ 693 0012 2146     		mov	r1, r4
+ 694 0014 01A8     		add	r0, sp, #4
+ 695              	.LVL65:
+ 696              		.loc 1 225 8 view .LVU169
+ 697 0016 FFF7FEFF 		bl	memset
+ 698              	.LVL66:
  699              	.L48:
- 227:Core/Src/SPI_FRAM.c ****   while(1){
- 700              		.loc 1 227 3 is_stmt 1 view .LVU172
- 228:Core/Src/SPI_FRAM.c ****     value[index] = FRAM_read8(*addr);
- 701              		.loc 1 228 5 view .LVU173
- 702              		.loc 1 228 20 is_stmt 0 view .LVU174
- 703 0016 2868     		ldr	r0, [r5]
- 704 0018 FFF7FEFF 		bl	FRAM_read8
- 705              	.LVL68:
- 706              		.loc 1 228 18 view .LVU175
- 707 001c 01AB     		add	r3, sp, #4
- 708 001e 1855     		strb	r0, [r3, r4]
- 229:Core/Src/SPI_FRAM.c ****     ++*addr;
- 709              		.loc 1 229 5 is_stmt 1 view .LVU176
- 710              		.loc 1 229 7 is_stmt 0 view .LVU177
- 711 0020 2B68     		ldr	r3, [r5]
- 712              		.loc 1 229 5 view .LVU178
- 713 0022 0133     		adds	r3, r3, #1
- 714 0024 2B60     		str	r3, [r5]
- 230:Core/Src/SPI_FRAM.c ****     if(value[index]=='\n'){
- 715              		.loc 1 230 5 is_stmt 1 view .LVU179
- 716              		.loc 1 230 7 is_stmt 0 view .LVU180
- 717 0026 0A28     		cmp	r0, #10
- 718 0028 01D0     		beq	.L49
- 231:Core/Src/SPI_FRAM.c ****       char* buffer = value;
- 232:Core/Src/SPI_FRAM.c ****       return buffer;
- 233:Core/Src/SPI_FRAM.c ****     }
- 234:Core/Src/SPI_FRAM.c ****     index++;
- 719              		.loc 1 234 5 is_stmt 1 view .LVU181
- 720              		.loc 1 234 10 is_stmt 0 view .LVU182
- 721 002a 0134     		adds	r4, r4, #1
- 722              	.LVL69:
+ 226:Core/Src/SPI_FRAM.c ****   while(1){
+ 700              		.loc 1 226 3 is_stmt 1 view .LVU170
  227:Core/Src/SPI_FRAM.c ****     value[index] = FRAM_read8(*addr);
- 723              		.loc 1 227 8 is_stmt 1 view .LVU183
+ 701              		.loc 1 227 5 view .LVU171
+ 702              		.loc 1 227 20 is_stmt 0 view .LVU172
+ 703 001a 2868     		ldr	r0, [r5]
+ 704 001c FFF7FEFF 		bl	FRAM_read8
+ 705              	.LVL67:
+ 706              		.loc 1 227 18 view .LVU173
+ 707 0020 0DF80400 		strb	r0, [sp, r4]
  228:Core/Src/SPI_FRAM.c ****     ++*addr;
- 724              		.loc 1 228 18 is_stmt 0 view .LVU184
- 725 002c F3E7     		b	.L48
- 726              	.L49:
- 235:Core/Src/SPI_FRAM.c ****   }
- 236:Core/Src/SPI_FRAM.c **** }
- 727              		.loc 1 236 1 view .LVU185
- 728 002e 01A8     		add	r0, sp, #4
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 18
+ 708              		.loc 1 228 5 is_stmt 1 view .LVU174
+ 709              		.loc 1 228 7 is_stmt 0 view .LVU175
+ 710 0024 2B68     		ldr	r3, [r5]
+ 711              		.loc 1 228 5 view .LVU176
+ 712 0026 0133     		adds	r3, r3, #1
+ 713 0028 2B60     		str	r3, [r5]
+ 229:Core/Src/SPI_FRAM.c ****     if(value[index]=='\n'){
+ 714              		.loc 1 229 5 is_stmt 1 view .LVU177
+ 715              		.loc 1 229 7 is_stmt 0 view .LVU178
+ 716 002a 0A28     		cmp	r0, #10
+ 717 002c 01D0     		beq	.L49
+ 230:Core/Src/SPI_FRAM.c ****       char* buffer = value;
+ 231:Core/Src/SPI_FRAM.c ****       return buffer;
+ 232:Core/Src/SPI_FRAM.c ****     }
+ 233:Core/Src/SPI_FRAM.c ****     index++;
+ 718              		.loc 1 233 5 is_stmt 1 view .LVU179
+ 719              		.loc 1 233 10 is_stmt 0 view .LVU180
+ 720 002e 0134     		adds	r4, r4, #1
+ 721              	.LVL68:
+ 226:Core/Src/SPI_FRAM.c ****     value[index] = FRAM_read8(*addr);
+ 722              		.loc 1 226 8 is_stmt 1 view .LVU181
+ 227:Core/Src/SPI_FRAM.c ****     ++*addr;
+ 723              		.loc 1 227 18 is_stmt 0 view .LVU182
+ 724 0030 F3E7     		b	.L48
+ 725              	.L49:
+ 234:Core/Src/SPI_FRAM.c ****   }
+ 235:Core/Src/SPI_FRAM.c **** }
+ 726              		.loc 1 235 1 view .LVU183
+ 727 0032 6846     		mov	r0, sp
+ 728 0034 0DF5805D 		add	sp, sp, #4096
+ 729 0038 01B0     		add	sp, sp, #4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 18
 
 
- 729 0030 4DB0     		add	sp, sp, #308
- 730              	.LCFI21:
+ 730              	.LCFI22:
  731              		.cfi_def_cfa_offset 12
  732              		@ sp needed
- 733 0032 30BD     		pop	{r4, r5, pc}
- 734              		.loc 1 236 1 view .LVU186
+ 733 003a 30BD     		pop	{r4, r5, pc}
+ 734              		.loc 1 235 1 view .LVU184
  735              		.cfi_endproc
  736              	.LFE139:
  738              		.section	.text.FRAM_getID,"ax",%progbits
@@ -1037,144 +1036,144 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  743              		.thumb_func
  744              		.fpu fpv4-sp-d16
  746              	FRAM_getID:
- 747              	.LVL70:
+ 747              	.LVL69:
  748              	.LFB140:
- 237:Core/Src/SPI_FRAM.c **** 
- 238:Core/Src/SPI_FRAM.c **** void FRAM_getID(uint8_t *manufacturerID, uint16_t *productID){
- 749              		.loc 1 238 62 is_stmt 1 view -0
+ 236:Core/Src/SPI_FRAM.c **** 
+ 237:Core/Src/SPI_FRAM.c **** void FRAM_getID(uint8_t *manufacturerID, uint16_t *productID){
+ 749              		.loc 1 237 62 is_stmt 1 view -0
  750              		.cfi_startproc
  751              		@ args = 0, pretend = 0, frame = 8
  752              		@ frame_needed = 0, uses_anonymous_args = 0
- 753              		.loc 1 238 62 is_stmt 0 view .LVU188
+ 753              		.loc 1 237 62 is_stmt 0 view .LVU186
  754 0000 70B5     		push	{r4, r5, r6, lr}
- 755              	.LCFI22:
+ 755              	.LCFI23:
  756              		.cfi_def_cfa_offset 16
  757              		.cfi_offset 4, -16
  758              		.cfi_offset 5, -12
  759              		.cfi_offset 6, -8
  760              		.cfi_offset 14, -4
  761 0002 82B0     		sub	sp, sp, #8
- 762              	.LCFI23:
+ 762              	.LCFI24:
  763              		.cfi_def_cfa_offset 24
  764 0004 0546     		mov	r5, r0
  765 0006 0C46     		mov	r4, r1
- 239:Core/Src/SPI_FRAM.c ****   uint8_t cmd = OPCODE_RDID;
- 766              		.loc 1 239 3 is_stmt 1 view .LVU189
- 767              		.loc 1 239 11 is_stmt 0 view .LVU190
+ 238:Core/Src/SPI_FRAM.c ****   uint8_t cmd = OPCODE_RDID;
+ 766              		.loc 1 238 3 is_stmt 1 view .LVU187
+ 767              		.loc 1 238 11 is_stmt 0 view .LVU188
  768 0008 9F23     		movs	r3, #159
  769 000a 8DF80730 		strb	r3, [sp, #7]
- 240:Core/Src/SPI_FRAM.c ****   uint8_t a[4] = {0, 0, 0, 0};
- 770              		.loc 1 240 3 is_stmt 1 view .LVU191
- 771              		.loc 1 240 11 is_stmt 0 view .LVU192
+ 239:Core/Src/SPI_FRAM.c ****   uint8_t a[4] = {0, 0, 0, 0};
+ 770              		.loc 1 239 3 is_stmt 1 view .LVU189
+ 771              		.loc 1 239 11 is_stmt 0 view .LVU190
  772 000e 0022     		movs	r2, #0
  773 0010 0092     		str	r2, [sp]
- 241:Core/Src/SPI_FRAM.c ****   CS_LOW();
- 774              		.loc 1 241 3 is_stmt 1 view .LVU193
+ 240:Core/Src/SPI_FRAM.c ****   CS_LOW();
+ 774              		.loc 1 240 3 is_stmt 1 view .LVU191
  775 0012 2021     		movs	r1, #32
- 776              	.LVL71:
- 777              		.loc 1 241 3 is_stmt 0 view .LVU194
+ 776              	.LVL70:
+ 777              		.loc 1 240 3 is_stmt 0 view .LVU192
  778 0014 4FF09040 		mov	r0, #1207959552
- 779              	.LVL72:
- 780              		.loc 1 241 3 view .LVU195
+ 779              	.LVL71:
+ 780              		.loc 1 240 3 view .LVU193
  781 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 782              	.LVL73:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 19
+ 782              	.LVL72:
+ 783              		.loc 1 240 11 is_stmt 1 view .LVU194
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 19
 
 
- 783              		.loc 1 241 11 is_stmt 1 view .LVU196
- 242:Core/Src/SPI_FRAM.c ****   HAL_SPI_Transmit(&SPI_FRAM_HANDLE, &cmd, 1, 10);
- 784              		.loc 1 242 3 view .LVU197
+ 241:Core/Src/SPI_FRAM.c ****   HAL_SPI_Transmit(&SPI_FRAM_HANDLE, &cmd, 1, 10);
+ 784              		.loc 1 241 3 view .LVU195
  785 001c 174E     		ldr	r6, .L56
  786 001e 0A23     		movs	r3, #10
  787 0020 0122     		movs	r2, #1
  788 0022 0DF10701 		add	r1, sp, #7
  789 0026 3046     		mov	r0, r6
  790 0028 FFF7FEFF 		bl	HAL_SPI_Transmit
- 791              	.LVL74:
- 243:Core/Src/SPI_FRAM.c ****   HAL_SPI_Receive(&SPI_FRAM_HANDLE, (uint8_t *)a, sizeof(a), 10);
- 792              		.loc 1 243 3 view .LVU198
+ 791              	.LVL73:
+ 242:Core/Src/SPI_FRAM.c ****   HAL_SPI_Receive(&SPI_FRAM_HANDLE, (uint8_t *)a, sizeof(a), 10);
+ 792              		.loc 1 242 3 view .LVU196
  793 002c 0A23     		movs	r3, #10
  794 002e 0422     		movs	r2, #4
  795 0030 6946     		mov	r1, sp
  796 0032 3046     		mov	r0, r6
  797 0034 FFF7FEFF 		bl	HAL_SPI_Receive
- 798              	.LVL75:
- 244:Core/Src/SPI_FRAM.c ****   CS_HIGH();
- 799              		.loc 1 244 3 view .LVU199
+ 798              	.LVL74:
+ 243:Core/Src/SPI_FRAM.c ****   CS_HIGH();
+ 799              		.loc 1 243 3 view .LVU197
  800 0038 0122     		movs	r2, #1
  801 003a 2021     		movs	r1, #32
  802 003c 4FF09040 		mov	r0, #1207959552
  803 0040 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 804              	.LVL76:
- 805              		.loc 1 244 12 view .LVU200
- 245:Core/Src/SPI_FRAM.c ****   if(a[1] == 0x7f){
- 806              		.loc 1 245 3 view .LVU201
- 807              		.loc 1 245 7 is_stmt 0 view .LVU202
+ 804              	.LVL75:
+ 805              		.loc 1 243 12 view .LVU198
+ 244:Core/Src/SPI_FRAM.c ****   if(a[1] == 0x7f){
+ 806              		.loc 1 244 3 view .LVU199
+ 807              		.loc 1 244 7 is_stmt 0 view .LVU200
  808 0044 9DF80130 		ldrb	r3, [sp, #1]	@ zero_extendqisi2
- 809              		.loc 1 245 5 view .LVU203
+ 809              		.loc 1 244 5 view .LVU201
  810 0048 7F2B     		cmp	r3, #127
  811 004a 0BD0     		beq	.L55
- 246:Core/Src/SPI_FRAM.c ****     // Device with continuation code (0x7F) in their second byte
- 247:Core/Src/SPI_FRAM.c ****     // Manu ( 1 byte)  - 0x7F - Product (2 bytes)
- 248:Core/Src/SPI_FRAM.c ****     *manufacturerID = (a[0]);
- 249:Core/Src/SPI_FRAM.c ****     *productID = (a[2] << 8) + a[3];
- 250:Core/Src/SPI_FRAM.c ****   } else {
- 251:Core/Src/SPI_FRAM.c ****     // Device without continuation code
- 252:Core/Src/SPI_FRAM.c ****     // Manu ( 1 byte)  - Product (2 bytes)
- 253:Core/Src/SPI_FRAM.c ****     *manufacturerID = (a[0]);
- 812              		.loc 1 253 5 is_stmt 1 view .LVU204
- 813              		.loc 1 253 25 is_stmt 0 view .LVU205
+ 245:Core/Src/SPI_FRAM.c ****     // Device with continuation code (0x7F) in their second byte
+ 246:Core/Src/SPI_FRAM.c ****     // Manu ( 1 byte)  - 0x7F - Product (2 bytes)
+ 247:Core/Src/SPI_FRAM.c ****     *manufacturerID = (a[0]);
+ 248:Core/Src/SPI_FRAM.c ****     *productID = (a[2] << 8) + a[3];
+ 249:Core/Src/SPI_FRAM.c ****   } else {
+ 250:Core/Src/SPI_FRAM.c ****     // Device without continuation code
+ 251:Core/Src/SPI_FRAM.c ****     // Manu ( 1 byte)  - Product (2 bytes)
+ 252:Core/Src/SPI_FRAM.c ****     *manufacturerID = (a[0]);
+ 812              		.loc 1 252 5 is_stmt 1 view .LVU202
+ 813              		.loc 1 252 25 is_stmt 0 view .LVU203
  814 004c 9DF80030 		ldrb	r3, [sp]	@ zero_extendqisi2
- 815              		.loc 1 253 21 view .LVU206
+ 815              		.loc 1 252 21 view .LVU204
  816 0050 2B70     		strb	r3, [r5]
- 254:Core/Src/SPI_FRAM.c ****     *productID = (a[1] << 8) + a[2];
- 817              		.loc 1 254 5 is_stmt 1 view .LVU207
- 818              		.loc 1 254 20 is_stmt 0 view .LVU208
+ 253:Core/Src/SPI_FRAM.c ****     *productID = (a[1] << 8) + a[2];
+ 817              		.loc 1 253 5 is_stmt 1 view .LVU205
+ 818              		.loc 1 253 20 is_stmt 0 view .LVU206
  819 0052 9DF80120 		ldrb	r2, [sp, #1]	@ zero_extendqisi2
- 820              		.loc 1 254 33 view .LVU209
+ 820              		.loc 1 253 33 view .LVU207
  821 0056 9DF80230 		ldrb	r3, [sp, #2]	@ zero_extendqisi2
- 822              		.loc 1 254 30 view .LVU210
+ 822              		.loc 1 253 30 view .LVU208
  823 005a 03EB0223 		add	r3, r3, r2, lsl #8
- 824              		.loc 1 254 16 view .LVU211
+ 824              		.loc 1 253 16 view .LVU209
  825 005e 2380     		strh	r3, [r4]	@ movhi
  826              	.L51:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 20
+ 254:Core/Src/SPI_FRAM.c ****   }
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 20
 
 
- 255:Core/Src/SPI_FRAM.c ****   }
- 256:Core/Src/SPI_FRAM.c **** }
- 827              		.loc 1 256 1 view .LVU212
+ 255:Core/Src/SPI_FRAM.c **** }
+ 827              		.loc 1 255 1 view .LVU210
  828 0060 02B0     		add	sp, sp, #8
- 829              	.LCFI24:
+ 829              	.LCFI25:
  830              		.cfi_remember_state
  831              		.cfi_def_cfa_offset 16
  832              		@ sp needed
  833 0062 70BD     		pop	{r4, r5, r6, pc}
- 834              	.LVL77:
+ 834              	.LVL76:
  835              	.L55:
- 836              	.LCFI25:
+ 836              	.LCFI26:
  837              		.cfi_restore_state
- 248:Core/Src/SPI_FRAM.c ****     *productID = (a[2] << 8) + a[3];
- 838              		.loc 1 248 5 is_stmt 1 view .LVU213
- 248:Core/Src/SPI_FRAM.c ****     *productID = (a[2] << 8) + a[3];
- 839              		.loc 1 248 25 is_stmt 0 view .LVU214
+ 247:Core/Src/SPI_FRAM.c ****     *productID = (a[2] << 8) + a[3];
+ 838              		.loc 1 247 5 is_stmt 1 view .LVU211
+ 247:Core/Src/SPI_FRAM.c ****     *productID = (a[2] << 8) + a[3];
+ 839              		.loc 1 247 25 is_stmt 0 view .LVU212
  840 0064 9DF80030 		ldrb	r3, [sp]	@ zero_extendqisi2
- 248:Core/Src/SPI_FRAM.c ****     *productID = (a[2] << 8) + a[3];
- 841              		.loc 1 248 21 view .LVU215
+ 247:Core/Src/SPI_FRAM.c ****     *productID = (a[2] << 8) + a[3];
+ 841              		.loc 1 247 21 view .LVU213
  842 0068 2B70     		strb	r3, [r5]
- 249:Core/Src/SPI_FRAM.c ****   } else {
- 843              		.loc 1 249 5 is_stmt 1 view .LVU216
- 249:Core/Src/SPI_FRAM.c ****   } else {
- 844              		.loc 1 249 20 is_stmt 0 view .LVU217
+ 248:Core/Src/SPI_FRAM.c ****   } else {
+ 843              		.loc 1 248 5 is_stmt 1 view .LVU214
+ 248:Core/Src/SPI_FRAM.c ****   } else {
+ 844              		.loc 1 248 20 is_stmt 0 view .LVU215
  845 006a 9DF80220 		ldrb	r2, [sp, #2]	@ zero_extendqisi2
- 249:Core/Src/SPI_FRAM.c ****   } else {
- 846              		.loc 1 249 33 view .LVU218
+ 248:Core/Src/SPI_FRAM.c ****   } else {
+ 846              		.loc 1 248 33 view .LVU216
  847 006e 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
- 249:Core/Src/SPI_FRAM.c ****   } else {
- 848              		.loc 1 249 30 view .LVU219
+ 248:Core/Src/SPI_FRAM.c ****   } else {
+ 848              		.loc 1 248 30 view .LVU217
  849 0072 03EB0223 		add	r3, r3, r2, lsl #8
- 249:Core/Src/SPI_FRAM.c ****   } else {
- 850              		.loc 1 249 16 view .LVU220
+ 248:Core/Src/SPI_FRAM.c ****   } else {
+ 850              		.loc 1 248 16 view .LVU218
  851 0076 2380     		strh	r3, [r4]	@ movhi
  852 0078 F2E7     		b	.L51
  853              	.L57:
@@ -1191,30 +1190,30 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  865              		.thumb_func
  866              		.fpu fpv4-sp-d16
  868              	setAddressSize:
- 869              	.LVL78:
+ 869              	.LVL77:
  870              	.LFB141:
- 257:Core/Src/SPI_FRAM.c **** 
- 258:Core/Src/SPI_FRAM.c **** /*!
- 259:Core/Src/SPI_FRAM.c ****  *   @brief  Sets adress size to provided value
- 260:Core/Src/SPI_FRAM.c ****  *   @param  nAddressSize
- 261:Core/Src/SPI_FRAM.c ****  *           address size in bytes
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 21
+ 256:Core/Src/SPI_FRAM.c **** 
+ 257:Core/Src/SPI_FRAM.c **** /*!
+ 258:Core/Src/SPI_FRAM.c ****  *   @brief  Sets adress size to provided value
+ 259:Core/Src/SPI_FRAM.c ****  *   @param  nAddressSize
+ 260:Core/Src/SPI_FRAM.c ****  *           address size in bytes
+ 261:Core/Src/SPI_FRAM.c ****  */
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 21
 
 
- 262:Core/Src/SPI_FRAM.c ****  */
- 263:Core/Src/SPI_FRAM.c **** void setAddressSize(uint8_t nAddressSize) {
- 871              		.loc 1 263 43 is_stmt 1 view -0
+ 262:Core/Src/SPI_FRAM.c **** void setAddressSize(uint8_t nAddressSize) {
+ 871              		.loc 1 262 43 is_stmt 1 view -0
  872              		.cfi_startproc
  873              		@ args = 0, pretend = 0, frame = 0
  874              		@ frame_needed = 0, uses_anonymous_args = 0
  875              		@ link register save eliminated.
- 264:Core/Src/SPI_FRAM.c ****   spi_fram._nAddressSizeBytes = nAddressSize;
- 876              		.loc 1 264 3 view .LVU222
- 877              		.loc 1 264 31 is_stmt 0 view .LVU223
+ 263:Core/Src/SPI_FRAM.c ****   spi_fram._nAddressSizeBytes = nAddressSize;
+ 876              		.loc 1 263 3 view .LVU220
+ 877              		.loc 1 263 31 is_stmt 0 view .LVU221
  878 0000 014B     		ldr	r3, .L59
  879 0002 1870     		strb	r0, [r3]
- 265:Core/Src/SPI_FRAM.c **** }...
- 880              		.loc 1 265 1 view .LVU224
+ 264:Core/Src/SPI_FRAM.c **** }...
+ 880              		.loc 1 264 1 view .LVU222
  881 0004 7047     		bx	lr
  882              	.L60:
  883 0006 00BF     		.align	2
@@ -1230,7 +1229,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  894              		.thumb_func
  895              		.fpu fpv4-sp-d16
  897              	FRAM_begin:
- 898              	.LVL79:
+ 898              	.LVL78:
  899              	.LFB133:
   99:Core/Src/SPI_FRAM.c **** bool FRAM_begin(uint8_t nAddressSizeBytes) {
  900              		.loc 1 99 44 is_stmt 1 view -0
@@ -1238,48 +1237,48 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  902              		@ args = 0, pretend = 0, frame = 0
  903              		@ frame_needed = 0, uses_anonymous_args = 0
   99:Core/Src/SPI_FRAM.c **** bool FRAM_begin(uint8_t nAddressSizeBytes) {
- 904              		.loc 1 99 44 is_stmt 0 view .LVU226
+ 904              		.loc 1 99 44 is_stmt 0 view .LVU224
  905 0000 08B5     		push	{r3, lr}
- 906              	.LCFI26:
+ 906              	.LCFI27:
  907              		.cfi_def_cfa_offset 8
  908              		.cfi_offset 3, -8
  909              		.cfi_offset 14, -4
  101:Core/Src/SPI_FRAM.c ****   if (SPI_FRAM_HANDLE.State != HAL_SPI_STATE_READY) {
- 910              		.loc 1 101 3 is_stmt 1 view .LVU227
+ 910              		.loc 1 101 3 is_stmt 1 view .LVU225
  101:Core/Src/SPI_FRAM.c ****   if (SPI_FRAM_HANDLE.State != HAL_SPI_STATE_READY) {
- 911              		.loc 1 101 22 is_stmt 0 view .LVU228
+ 911              		.loc 1 101 22 is_stmt 0 view .LVU226
  912 0002 064B     		ldr	r3, .L66
  913 0004 93F85D30 		ldrb	r3, [r3, #93]	@ zero_extendqisi2
  914 0008 DBB2     		uxtb	r3, r3
  101:Core/Src/SPI_FRAM.c ****   if (SPI_FRAM_HANDLE.State != HAL_SPI_STATE_READY) {
- 915              		.loc 1 101 6 view .LVU229
+ 915              		.loc 1 101 6 view .LVU227
  916 000a 012B     		cmp	r3, #1
  917 000c 01D0     		beq	.L65
  102:Core/Src/SPI_FRAM.c ****     return false;
- 918              		.loc 1 102 12 view .LVU230
+ 918              		.loc 1 102 12 view .LVU228
  919 000e 0020     		movs	r0, #0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 22
+ 920              	.LVL79:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 22
 
 
- 920              	.LVL80:
  921              	.L62:
  106:Core/Src/SPI_FRAM.c **** }
- 922              		.loc 1 106 1 view .LVU231
+ 922              		.loc 1 106 1 view .LVU229
  923 0010 08BD     		pop	{r3, pc}
- 924              	.LVL81:
+ 924              	.LVL80:
  925              	.L65:
  104:Core/Src/SPI_FRAM.c ****   setAddressSize(3);
- 926              		.loc 1 104 3 is_stmt 1 view .LVU232
+ 926              		.loc 1 104 3 is_stmt 1 view .LVU230
  927 0012 0320     		movs	r0, #3
- 928              	.LVL82:
+ 928              	.LVL81:
  104:Core/Src/SPI_FRAM.c ****   setAddressSize(3);
- 929              		.loc 1 104 3 is_stmt 0 view .LVU233
+ 929              		.loc 1 104 3 is_stmt 0 view .LVU231
  930 0014 FFF7FEFF 		bl	setAddressSize
- 931              	.LVL83:
+ 931              	.LVL82:
  105:Core/Src/SPI_FRAM.c ****   return true;
- 932              		.loc 1 105 3 is_stmt 1 view .LVU234
+ 932              		.loc 1 105 3 is_stmt 1 view .LVU232
  105:Core/Src/SPI_FRAM.c ****   return true;
- 933              		.loc 1 105 10 is_stmt 0 view .LVU235
+ 933              		.loc 1 105 10 is_stmt 0 view .LVU233
  934 0018 0120     		movs	r0, #1
  935 001a F9E7     		b	.L62
  936              	.L67:
@@ -1318,10 +1317,10 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  972 0029 00       		.space	1
  973 002a 0349     		.short	18691
  974 002c 00000800 		.word	524288
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 23
-
-
  975 0030 7F       		.byte	127
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 23
+
+
  976 0031 00       		.space	1
  977 0032 7F7F     		.short	32639
  978 0034 00800000 		.word	32768
@@ -1349,42 +1348,42 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 1
  1000              		.file 17 "Core/Inc/SPI_FRAM.h"
  1001              		.file 18 "c:\\ncs\\v1.7.1\\toolchain\\opt\\arm-none-eabi\\include\\string.h"
  1002              		.file 19 "<built-in>"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s 			page 24
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s 			page 24
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 SPI_FRAM.c
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:18     .text.check_supported_device:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:26     .text.check_supported_device:00000000 check_supported_device
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:122    .text.check_supported_device:00000044 $d
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:127    .text.FRAM_writeEnable:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:134    .text.FRAM_writeEnable:00000000 FRAM_writeEnable
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:200    .text.FRAM_writeEnable:00000040 $d
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:205    .text.FRAM_sleepEnable:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:212    .text.FRAM_sleepEnable:00000000 FRAM_sleepEnable
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:295    .text.FRAM_sleepEnable:00000058 $d
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:300    .text.FRAM_write8:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:307    .text.FRAM_write8:00000000 FRAM_write8
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:434    .text.FRAM_write8:00000080 $d
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:18     .text.check_supported_device:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:26     .text.check_supported_device:00000000 check_supported_device
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:122    .text.check_supported_device:00000044 $d
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:127    .text.FRAM_writeEnable:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:134    .text.FRAM_writeEnable:00000000 FRAM_writeEnable
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:200    .text.FRAM_writeEnable:00000040 $d
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:205    .text.FRAM_sleepEnable:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:212    .text.FRAM_sleepEnable:00000000 FRAM_sleepEnable
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:295    .text.FRAM_sleepEnable:00000058 $d
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:300    .text.FRAM_write8:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:307    .text.FRAM_write8:00000000 FRAM_write8
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:434    .text.FRAM_write8:00000080 $d
                             *COM*:00000001 spi_fram
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:440    .text.FRAM_write:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:447    .text.FRAM_write:00000000 FRAM_write
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:517    .text.FRAM_read8:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:524    .text.FRAM_read8:00000000 FRAM_read8
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:652    .text.FRAM_read8:0000008c $d
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:658    .text.FRAM_read:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:665    .text.FRAM_read:00000000 FRAM_read
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:739    .text.FRAM_getID:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:746    .text.FRAM_getID:00000000 FRAM_getID
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:856    .text.FRAM_getID:0000007c $d
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:861    .text.setAddressSize:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:868    .text.setAddressSize:00000000 setAddressSize
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:885    .text.setAddressSize:00000008 $d
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:890    .text.FRAM_begin:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:897    .text.FRAM_begin:00000000 FRAM_begin
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:939    .text.FRAM_begin:0000001c $d
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:950    .rodata._supported_devices:00000000 _supported_devices
-C:\Users\Admin\AppData\Local\Temp\cc0JKBqc.s:946    .rodata._supported_devices:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:440    .text.FRAM_write:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:447    .text.FRAM_write:00000000 FRAM_write
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:517    .text.FRAM_read8:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:524    .text.FRAM_read8:00000000 FRAM_read8
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:652    .text.FRAM_read8:0000008c $d
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:658    .text.FRAM_read:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:665    .text.FRAM_read:00000000 FRAM_read
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:739    .text.FRAM_getID:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:746    .text.FRAM_getID:00000000 FRAM_getID
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:856    .text.FRAM_getID:0000007c $d
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:861    .text.setAddressSize:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:868    .text.setAddressSize:00000000 setAddressSize
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:885    .text.setAddressSize:00000008 $d
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:890    .text.FRAM_begin:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:897    .text.FRAM_begin:00000000 FRAM_begin
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:939    .text.FRAM_begin:0000001c $d
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:950    .rodata._supported_devices:00000000 _supported_devices
+C:\Users\Admin\AppData\Local\Temp\ccIFJD4j.s:946    .rodata._supported_devices:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

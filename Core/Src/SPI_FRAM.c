@@ -93,7 +93,7 @@ const struct {
  *  @brief  Initializes SPI and configures the chip (call this function before
  *          doing anything else)
  *  @param  nAddressSizeBytes
- *          sddress size in bytes (default 2)
+ *          address size in bytes (2MByte - 3)
  *  @return true if successful
  */
 bool FRAM_begin(uint8_t nAddressSizeBytes) {
@@ -222,8 +222,7 @@ uint8_t FRAM_read8(uint32_t addr) {
  */
 const char* FRAM_read(uint32_t *addr){
   int index = 0;
-  int buffer_index = *addr;
-  char value[300] = {'\0'};
+  char value[4096] = {'\0'};
   while(1){
     value[index] = FRAM_read8(*addr);
     ++*addr;

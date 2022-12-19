@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 1
   28:Core/Src/system_stm32l4xx.c ****   *        System Clock source                    | MSI
   29:Core/Src/system_stm32l4xx.c ****   *-----------------------------------------------------------------------------
   30:Core/Src/system_stm32l4xx.c ****   *        SYSCLK(Hz)                             | 4000000
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s 			page 2
 
 
   31:Core/Src/system_stm32l4xx.c ****   *-----------------------------------------------------------------------------
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 1
   85:Core/Src/system_stm32l4xx.c ****   */
   86:Core/Src/system_stm32l4xx.c **** 
   87:Core/Src/system_stm32l4xx.c **** /** @addtogroup STM32L4xx_System_Private_Includes
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s 			page 3
 
 
   88:Core/Src/system_stm32l4xx.c ****   * @{
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 1
  142:Core/Src/system_stm32l4xx.c ****                                                      This value must be a multiple of 0x200. */
  143:Core/Src/system_stm32l4xx.c **** #endif /* VECT_TAB_SRAM */
  144:Core/Src/system_stm32l4xx.c **** #endif /* USER_VECT_TAB_ADDRESS */
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s 			page 4
 
 
  145:Core/Src/system_stm32l4xx.c **** 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 1
   29              		.loc 1 198 1 view -0
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s 			page 5
 
 
   32              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 1
  228:Core/Src/system_stm32l4xx.c ****   *           - If SYSCLK source is HSE, SystemCoreClock will contain the HSE_VALUE(***)
  229:Core/Src/system_stm32l4xx.c ****   *
  230:Core/Src/system_stm32l4xx.c ****   *           - If SYSCLK source is PLL, SystemCoreClock will contain the HSE_VALUE(***)
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s 			page 6
 
 
  231:Core/Src/system_stm32l4xx.c ****   *             or HSI_VALUE(*) or MSI_VALUE(*) multiplied/divided by the PLL factors.
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 1
  264:Core/Src/system_stm32l4xx.c ****   /*MSI frequency range in HZ*/
  265:Core/Src/system_stm32l4xx.c ****   msirange = MSIRangeTable[msirange];
   80              		.loc 1 265 3 is_stmt 1 view .LVU12
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s 			page 7
 
 
   81              		.loc 1 265 12 is_stmt 0 view .LVU13
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 1
  125 0044 1960     		str	r1, [r3]
  272:Core/Src/system_stm32l4xx.c ****       break;
  126              		.loc 1 272 7 is_stmt 1 view .LVU23
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s 			page 8
 
 
  127              	.LVL5:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 1
  315:Core/Src/system_stm32l4xx.c ****   /* HCLK clock frequency */
  316:Core/Src/system_stm32l4xx.c ****   SystemCoreClock >>= tmp;
  139              		.loc 1 316 3 is_stmt 1 view .LVU28
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s 			page 9
 
 
  140              		.loc 1 316 19 is_stmt 0 view .LVU29
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 1
  289:Core/Src/system_stm32l4xx.c ****       {
  180              		.loc 1 289 7 is_stmt 1 view .LVU44
  181 007c 022A     		cmp	r2, #2
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 10
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s 			page 10
 
 
  182 007e 04D0     		beq	.L14
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 1
  304:Core/Src/system_stm32l4xx.c ****       SystemCoreClock = pllvco/pllr;
  220              		.loc 1 304 12 view .LVU61
  221 00a4 5200     		lsls	r2, r2, #1
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 11
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s 			page 11
 
 
  222              	.LVL16:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 1
  265              		.global	MSIRangeTable
  266              		.global	APBPrescTable
  267              		.global	AHBPrescTable
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s 			page 12
 
 
  268              		.global	SystemCoreClock
@@ -707,27 +707,27 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 1
  315              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
  316              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
  317              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s 			page 13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 system_stm32l4xx.c
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:18     .text.SystemInit:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:26     .text.SystemInit:00000000 SystemInit
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:45     .text.SystemInit:00000010 $d
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:50     .text.SystemCoreClockUpdate:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:57     .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:95     .text.SystemCoreClockUpdate:0000002a $d
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:256    .text.SystemCoreClockUpdate:000000c0 $d
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:295    .rodata.MSIRangeTable:00000000 MSIRangeTable
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:288    .rodata.APBPrescTable:00000000 APBPrescTable
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:281    .rodata.AHBPrescTable:00000000 AHBPrescTable
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:274    .data.SystemCoreClock:00000000 SystemCoreClock
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:270    .data.SystemCoreClock:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:277    .rodata.AHBPrescTable:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:285    .rodata.APBPrescTable:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:291    .rodata.MSIRangeTable:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:109    .text.SystemCoreClockUpdate:00000037 $d
-C:\Users\Admin\AppData\Local\Temp\cc37SfDh.s:109    .text.SystemCoreClockUpdate:00000038 $t
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:18     .text.SystemInit:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:26     .text.SystemInit:00000000 SystemInit
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:45     .text.SystemInit:00000010 $d
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:50     .text.SystemCoreClockUpdate:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:57     .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:95     .text.SystemCoreClockUpdate:0000002a $d
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:256    .text.SystemCoreClockUpdate:000000c0 $d
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:295    .rodata.MSIRangeTable:00000000 MSIRangeTable
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:288    .rodata.APBPrescTable:00000000 APBPrescTable
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:281    .rodata.AHBPrescTable:00000000 AHBPrescTable
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:274    .data.SystemCoreClock:00000000 SystemCoreClock
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:270    .data.SystemCoreClock:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:277    .rodata.AHBPrescTable:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:285    .rodata.APBPrescTable:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:291    .rodata.MSIRangeTable:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:109    .text.SystemCoreClockUpdate:00000037 $d
+C:\Users\Admin\AppData\Local\Temp\cc7TpkiM.s:109    .text.SystemCoreClockUpdate:00000038 $t
 
 NO UNDEFINED SYMBOLS

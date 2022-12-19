@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
   27:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****     (+) Each Exti line can be configured within this driver.
   28:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** 
   29:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****     (+) Exti line can be configured in 3 different modes
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 2
 
 
   30:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****         (++) Interrupt
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
   84:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** 
   85:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** /* Includes ------------------------------------------------------------------*/
   86:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** #include "stm32l4xx_hal.h"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 3
 
 
   87:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  141:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   * @retval HAL Status.
  142:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   */
  143:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** HAL_StatusTypeDef HAL_EXTI_SetConfigLine(EXTI_HandleTypeDef *hexti, EXTI_ConfigTypeDef *pExtiConfig
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 4
 
 
  144:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** {
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  165:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   offset = ((pExtiConfig->Line & EXTI_REG_MASK) >> EXTI_REG_SHIFT);
   62              		.loc 1 165 3 is_stmt 1 view .LVU15
   63              		.loc 1 165 10 is_stmt 0 view .LVU16
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 5
 
 
   64 000e C2F30043 		ubfx	r3, r2, #16, #1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  182:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****     }
  183:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****     else
  184:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****     {
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 6
 
 
  185:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****       regval &= ~maskline;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  131 004c 05F0C065 		and	r5, r5, #100663296
  132              		.loc 1 209 8 view .LVU49
  133 0050 B5F1C06F 		cmp	r5, #100663296
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 7
 
 
  134 0054 1CD0     		beq	.L18
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  161              		.loc 1 236 12 is_stmt 0 view .LVU61
  162 006c 1460     		str	r4, [r2]
  237:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 8
 
 
  238:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   /* The event mode cannot be configured if the line does not support it */
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  195              		.cfi_restore 7
  196              		.cfi_restore 6
  197              		.cfi_restore 5
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 9
 
 
  198              		.cfi_restore 4
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  238 009a 02F00302 		and	r2, r2, #3
  239              	.LVL31:
  215:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****       regval |= (pExtiConfig->GPIOSel << (SYSCFG_EXTICR1_EXTI1_Pos * (linepos & 0x03u)));
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 10
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 10
 
 
  240              		.loc 1 215 69 view .LVU92
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  280              		.cfi_restore 4
  281              		.cfi_restore 5
  282              		.cfi_restore 6
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 11
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 11
 
 
  283              		.cfi_restore 7
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  272:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   uint32_t linepos;
  324              		.loc 1 272 3 view .LVU114
  273:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   uint32_t maskline;
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 12
 
 
  325              		.loc 1 273 3 view .LVU115
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  293:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   /* 1] Get core mode : interrupt */
  294:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   regaddr = (&EXTI->IMR1 + (EXTI_MODE_OFFSET * offset));
  359              		.loc 1 294 3 is_stmt 1 view .LVU131
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 13
 
 
  360              		.loc 1 294 26 is_stmt 0 view .LVU132
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  394              		.loc 1 314 5 is_stmt 1 view .LVU147
  395              		.loc 1 314 23 is_stmt 0 view .LVU148
  396 0036 4C68     		ldr	r4, [r1, #4]
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 14
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 14
 
 
  397              	.LVL52:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  334:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****     regaddr = (&EXTI->FTSR1 + (EXTI_CONFIG_OFFSET * offset));
  432              		.loc 1 334 5 is_stmt 1 view .LVU165
  433              		.loc 1 334 13 is_stmt 0 view .LVU166
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 15
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 15
 
 
  434 0056 164C     		ldr	r4, .L37+8
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  467              		.loc 1 304 23 is_stmt 0 view .LVU180
  468 0074 0024     		movs	r4, #0
  469              	.LVL62:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 16
 
 
  304:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   }
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  511              	.L29:
  279:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   }
  512              		.loc 1 279 12 view .LVU195
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 17
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 17
 
 
  513 009c 0120     		movs	r0, #1
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  558              		.cfi_startproc
  559              		@ args = 0, pretend = 0, frame = 0
  560              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 18
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 18
 
 
  561              		@ link register save eliminated.
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  595              	.LVL75:
  383:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** 
  384:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   /* 1] Clear interrupt mode */
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 19
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 19
 
 
  385:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   regaddr = (&EXTI->IMR1 + (EXTI_MODE_OFFSET * offset));
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  637              		.loc 1 397 5 is_stmt 1 view .LVU236
  638              		.loc 1 397 13 is_stmt 0 view .LVU237
  639 003c 1349     		ldr	r1, .L49+4
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 20
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 20
 
 
  640              	.LVL84:
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  675 005a 13E0     		b	.L40
  676              	.L48:
  408:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 21
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 21
 
 
  677              		.loc 1 408 7 is_stmt 1 view .LVU255
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  719              	.L42:
  720              	.LCFI10:
  721              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 22
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 22
 
 
  722              		.cfi_offset 4, -16
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  765              		@ frame_needed = 0, uses_anonymous_args = 0
  766              		@ link register save eliminated.
  767              		.loc 1 429 1 is_stmt 0 view .LVU273
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 23
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 23
 
 
  768 0000 0346     		mov	r3, r0
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  452:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   * @retval HAL Status.
  453:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   */
  454:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** HAL_StatusTypeDef HAL_EXTI_GetHandle(EXTI_HandleTypeDef *hexti, uint32_t ExtiLine)
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 24
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 24
 
 
  455:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** {
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  840              	.LFB137:
  472:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** 
  473:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 25
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 25
 
 
  474:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** /**
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  864              		.loc 1 504 12 view .LVU305
  865 000c 0121     		movs	r1, #1
  866 000e 01FA03F3 		lsl	r3, r1, r3
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 26
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 26
 
 
  867              	.LVL109:
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  904              		.cfi_endproc
  905              	.LFE137:
  907              		.section	.text.HAL_EXTI_GetPending,"ax",%progbits
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 27
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 27
 
 
  908              		.align	1
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  548:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   linepos = (hexti->Line & EXTI_PIN_MASK);
  937              		.loc 1 548 3 is_stmt 1 view .LVU333
  938              		.loc 1 548 11 is_stmt 0 view .LVU334
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 28
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 28
 
 
  939 0006 03F01F03 		and	r3, r3, #31
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  558:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** 
  559:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** 
  560:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c **** /**
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 29
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 29
 
 
  561:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   * @brief  Clear interrupt pending bit of a dedicated line.
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  1015              	.LVL130:
  1016              		.loc 1 585 11 view .LVU363
  1017 0012 0149     		ldr	r1, .L66
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 30
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 30
 
 
  1018              	.LVL131:
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  607:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   /* compute line register offset and line mask */
  608:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c ****   offset = ((hexti->Line & EXTI_REG_MASK) >> EXTI_REG_SHIFT);
  1053              		.loc 1 608 3 view .LVU373
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 31
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 31
 
 
  1054              		.loc 1 608 19 is_stmt 0 view .LVU374
@@ -1848,35 +1848,35 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 1
  1094              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h"
  1095              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
  1096              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s 			page 32
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s 			page 32
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32l4xx_hal_exti.c
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:18     .text.HAL_EXTI_SetConfigLine:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:26     .text.HAL_EXTI_SetConfigLine:00000000 HAL_EXTI_SetConfigLine
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:299    .text.HAL_EXTI_SetConfigLine:000000cc $d
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:307    .text.HAL_EXTI_GetConfigLine:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:314    .text.HAL_EXTI_GetConfigLine:00000000 HAL_EXTI_GetConfigLine
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:539    .text.HAL_EXTI_GetConfigLine:000000a8 $d
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:547    .text.HAL_EXTI_ClearConfigLine:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:554    .text.HAL_EXTI_ClearConfigLine:00000000 HAL_EXTI_ClearConfigLine
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:744    .text.HAL_EXTI_ClearConfigLine:00000088 $d
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:752    .text.HAL_EXTI_RegisterCallback:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:759    .text.HAL_EXTI_RegisterCallback:00000000 HAL_EXTI_RegisterCallback
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:792    .text.HAL_EXTI_GetHandle:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:799    .text.HAL_EXTI_GetHandle:00000000 HAL_EXTI_GetHandle
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:831    .text.HAL_EXTI_IRQHandler:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:838    .text.HAL_EXTI_IRQHandler:00000000 HAL_EXTI_IRQHandler
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:903    .text.HAL_EXTI_IRQHandler:00000028 $d
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:908    .text.HAL_EXTI_GetPending:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:915    .text.HAL_EXTI_GetPending:00000000 HAL_EXTI_GetPending
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:971    .text.HAL_EXTI_GetPending:0000001c $d
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:976    .text.HAL_EXTI_ClearPending:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:983    .text.HAL_EXTI_ClearPending:00000000 HAL_EXTI_ClearPending
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:1028   .text.HAL_EXTI_ClearPending:00000018 $d
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:1033   .text.HAL_EXTI_GenerateSWI:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:1040   .text.HAL_EXTI_GenerateSWI:00000000 HAL_EXTI_GenerateSWI
-C:\Users\Admin\AppData\Local\Temp\cct9ddNT.s:1082   .text.HAL_EXTI_GenerateSWI:00000018 $d
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:18     .text.HAL_EXTI_SetConfigLine:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:26     .text.HAL_EXTI_SetConfigLine:00000000 HAL_EXTI_SetConfigLine
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:299    .text.HAL_EXTI_SetConfigLine:000000cc $d
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:307    .text.HAL_EXTI_GetConfigLine:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:314    .text.HAL_EXTI_GetConfigLine:00000000 HAL_EXTI_GetConfigLine
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:539    .text.HAL_EXTI_GetConfigLine:000000a8 $d
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:547    .text.HAL_EXTI_ClearConfigLine:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:554    .text.HAL_EXTI_ClearConfigLine:00000000 HAL_EXTI_ClearConfigLine
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:744    .text.HAL_EXTI_ClearConfigLine:00000088 $d
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:752    .text.HAL_EXTI_RegisterCallback:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:759    .text.HAL_EXTI_RegisterCallback:00000000 HAL_EXTI_RegisterCallback
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:792    .text.HAL_EXTI_GetHandle:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:799    .text.HAL_EXTI_GetHandle:00000000 HAL_EXTI_GetHandle
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:831    .text.HAL_EXTI_IRQHandler:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:838    .text.HAL_EXTI_IRQHandler:00000000 HAL_EXTI_IRQHandler
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:903    .text.HAL_EXTI_IRQHandler:00000028 $d
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:908    .text.HAL_EXTI_GetPending:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:915    .text.HAL_EXTI_GetPending:00000000 HAL_EXTI_GetPending
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:971    .text.HAL_EXTI_GetPending:0000001c $d
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:976    .text.HAL_EXTI_ClearPending:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:983    .text.HAL_EXTI_ClearPending:00000000 HAL_EXTI_ClearPending
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:1028   .text.HAL_EXTI_ClearPending:00000018 $d
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:1033   .text.HAL_EXTI_GenerateSWI:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:1040   .text.HAL_EXTI_GenerateSWI:00000000 HAL_EXTI_GenerateSWI
+C:\Users\Admin\AppData\Local\Temp\ccfkx0Co.s:1082   .text.HAL_EXTI_GenerateSWI:00000018 $d
 
 NO UNDEFINED SYMBOLS
