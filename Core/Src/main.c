@@ -70,6 +70,7 @@ typedef enum{
   SD_DONE,
   USB_PLUGIN,
   USB_UNKNOWN,
+  USER_CONFIG
 }LOGGER_STAT;
 
 
@@ -116,7 +117,7 @@ static char newFileName[13];                                      // Create new 
 /*****************************************************************************************************************/
 
 /*************************************************USER DEFINE*****************************************************/
-static const unsigned int BUFFER_MAX = 250000;                             //User define max buffer from 20 to 262000 
+static const unsigned int BUFFER_MAX = 100;                             //User define max buffer from 20 to 262000 
 static const uint32_t MAX_IDLE_TIME_MSEC = 1000;                        //User define timeout before going low power
 /*****************************************************************************************************************/
 
@@ -279,12 +280,14 @@ char* newLog(LOGGER_STAT stat){
   uint8_t attempt = 1;
 
   /*Init SD PHY layer*/
-  HAL_GPIO_WritePin(SD_EN_GPIO_Port, SD_EN_Pin, SET);
-  HAL_GPIO_DeInit(GPIOB, GPIO_PIN_10 | GPIO_PIN_14 | GPIO_PIN_15| SD_CS_Pin);
-  MX_GPIO_Init();
-  MX_SPI2_Init(); 
-  MX_FATFS_Init();
-  HAL_Delay(300);
+  if(stat != BUFFER_SYNC_){
+    HAL_GPIO_WritePin(SD_EN_GPIO_Port, SD_EN_Pin, SET);
+    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_10 | GPIO_PIN_14 | GPIO_PIN_15| SD_CS_Pin);
+    MX_GPIO_Init();
+    MX_SPI2_Init(); 
+    MX_FATFS_Init();
+    HAL_Delay(300);
+  }
 
   /*Init and Mount SD Card in FATFS*/
   #ifdef DEBUG
@@ -729,46 +732,12 @@ int main(void)
   }
   else USB_init(USB_UNKNOWN);
 
-  
-  // if(USB_init(USB_UNKNOWN) == USB_PLUGIN);
-  // else USB_init(USB_UNKNOWN);
-  
   if(USB_Flag == 0){
     HAL_UARTEx_ReceiveToIdle_IT(&huart2, (uint8_t *)Rx_data, sizeof(Rx_data));
-    /*Initialize FRAM buffer with address value 3*/
     /*turn off SD NAND to save power*/
     turn_off_spi_SD();                
     HAL_GPIO_WritePin(SD_EN_GPIO_Port, SD_EN_Pin, RESET);
   }
-  #pragma region test SD
-  // myprintf("\r\n~ SD card demo by kiwih ~\r\n\r\n");
-  // HAL_Delay(1000);
-  // //Open the file system
-  // fres = f_mount(&FatFs, "", 1); //1=mount now
-  // if (fres != FR_OK) {
-	// myprintf("f_mount error (%i)\r\n", fres);
-	// Error_Handler();
-  // }
-
-  // //Let's get some statistics from the SD card
-  // DWORD free_clusters, free_sectors, total_sectors;
-  // FATFS* getFreeFs;
-  // fres = f_getfree("", &free_clusters, &getFreeFs);
-  // if (fres != FR_OK) {
-	// myprintf("f_getfree error (%i)\r\n", fres);
-	// while(1);
-  // }
-  // //Formula comes from ChaN's documentation
-  // total_sectors = (getFreeFs->n_fatent - 2) * getFreeFs->csize;
-  // free_sectors = free_clusters * getFreeFs->csize;
-  // myprintf("SD card stats:\r\n%10lu KiB total drive space.\r\n%10lu KiB available.\r\n", total_sectors / 2, free_sectors / 2);
-  // while (fres != FR_OK) {
-	//   myprintf("f_mount error (%i)\r\n", fres);
-  //   fres = f_mount(&FatFs, "", 1); //1=mount now
-  //   HAL_Delay(1000);
-	// Error_Handler();
-  // }
-  #pragma endregion
   /* USER CODE END 2 */
 
   /* Infinite loop */

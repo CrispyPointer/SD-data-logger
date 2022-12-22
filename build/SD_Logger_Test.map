@@ -1560,28 +1560,28 @@ LOAD c:/ncs/v1.7.1/toolchain/opt/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+
                 0x080007d8       0x4c build/main.o
  .text.MX_SPI2_Init
                 0x08000824       0x48 build/main.o
- .text.newLog   0x0800086c      0x2a8 build/main.o
+ .text.newLog   0x0800086c      0x2b0 build/main.o
                 0x0800086c                newLog
  .text.appendFile
-                0x08000b14      0x144 build/main.o
-                0x08000b14                appendFile
+                0x08000b1c      0x144 build/main.o
+                0x08000b1c                appendFile
  .text.buffer_sync
-                0x08000c58       0xe8 build/main.o
-                0x08000c58                buffer_sync
+                0x08000c60       0xe8 build/main.o
+                0x08000c60                buffer_sync
  .text.MX_USART2_UART_Init
-                0x08000d40       0x38 build/main.o
+                0x08000d48       0x38 build/main.o
  .text.MX_CRC_Init
-                0x08000d78       0x2c build/main.o
+                0x08000d80       0x2c build/main.o
  .text.SystemClock_Config
-                0x08000da4       0x72 build/main.o
-                0x08000da4                SystemClock_Config
- *fill*         0x08000e16        0x2 
+                0x08000dac       0x72 build/main.o
+                0x08000dac                SystemClock_Config
+ *fill*         0x08000e1e        0x2 
  .text.Stop_Mode_Entry
-                0x08000e18       0x6c build/main.o
-                0x08000e18                Stop_Mode_Entry
+                0x08000e20       0x6c build/main.o
+                0x08000e20                Stop_Mode_Entry
  .text.appendDATA
-                0x08000e84      0x1b8 build/main.o
-                0x08000e84                appendDATA
+                0x08000e8c      0x1b0 build/main.o
+                0x08000e8c                appendDATA
  .text.main     0x0800103c       0xf8 build/main.o
                 0x0800103c                main
  .text.NMI_Handler
@@ -2791,7 +2791,7 @@ LOAD c:/ncs/v1.7.1/toolchain/opt/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+
  .bss.USB_Flag  0x20000218        0x1 build/main.o
                 0x20000218                USB_Flag
  *fill*         0x20000219        0x3 
- .bss.buffer.10706
+ .bss.buffer.10707
                 0x2000021c      0x1f4 build/main.o
  .bss.newFileName
                 0x20000410        0xd build/main.o
@@ -3020,45 +3020,45 @@ LOAD c:/ncs/v1.7.1/toolchain/opt/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+
                 0x00000cad       0x1e c:/ncs/v1.7.1/toolchain/opt/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/crtn.o
 OUTPUT(build/SD_Logger_Test.elf elf32-littlearm)
 
-.debug_info     0x00000000    0x3c69b
- .debug_info    0x00000000     0x46cc build/main.o
- .debug_info    0x000046cc     0x1016 build/stm32l4xx_it.o
- .debug_info    0x000056e2     0x180f build/stm32l4xx_hal_msp.o
- .debug_info    0x00006ef1     0x10b7 build/user_diskio.o
- .debug_info    0x00007fa8     0x1fc5 build/user_diskio_spi.o
- .debug_info    0x00009f6d     0x1146 build/fatfs.o
- .debug_info    0x0000b0b3      0xd31 build/stm32l4xx_hal.o
- .debug_info    0x0000bde4     0x1239 build/stm32l4xx_hal_rcc.o
- .debug_info    0x0000d01d     0x12a2 build/stm32l4xx_hal_rcc_ex.o
- .debug_info    0x0000e2bf      0xb7b build/stm32l4xx_hal_gpio.o
- .debug_info    0x0000ee3a      0xb22 build/stm32l4xx_hal_dma.o
- .debug_info    0x0000f95c      0xdb7 build/stm32l4xx_hal_pwr_ex.o
- .debug_info    0x00010713     0x1313 build/stm32l4xx_hal_cortex.o
- .debug_info    0x00011a26     0x2520 build/stm32l4xx_hal_spi.o
- .debug_info    0x00013f46     0x55f5 build/stm32l4xx_hal_uart.o
- .debug_info    0x0001953b     0x133b build/stm32l4xx_hal_uart_ex.o
- .debug_info    0x0001a876      0x848 build/system_stm32l4xx.o
- .debug_info    0x0001b0be     0x1a3b build/SPI_FRAM.o
- .debug_info    0x0001caf9     0x10d8 build/diskio.o
- .debug_info    0x0001dbd1     0x52be build/ff.o
- .debug_info    0x00022e8f     0x1025 build/ff_gen_drv.o
- .debug_info    0x00023eb4      0x8ae build/stm32l4xx_hal_crc.o
- .debug_info    0x00024762      0x5fb build/stm32l4xx_hal_crc_ex.o
- .debug_info    0x00024d5d     0x1fea build/stm32l4xx_hal_pcd.o
- .debug_info    0x00026d47      0xd08 build/stm32l4xx_hal_pcd_ex.o
- .debug_info    0x00027a4f     0x1fce build/stm32l4xx_ll_usb.o
- .debug_info    0x00029a1d     0x13f5 build/usb_device.o
- .debug_info    0x0002ae12     0x128e build/usbd_desc.o
- .debug_info    0x0002c0a0     0x19ee build/usbd_storage_if.o
- .debug_info    0x0002da8e     0x2f2e build/usbd_conf.o
- .debug_info    0x000309bc     0x1b0d build/usbd_core.o
- .debug_info    0x000324c9     0x1fba build/usbd_ctlreq.o
- .debug_info    0x00034483     0x14f1 build/usbd_ioreq.o
- .debug_info    0x00035974     0x1bf7 build/usbd_msc.o
- .debug_info    0x0003756b     0x1c1a build/usbd_msc_bot.o
- .debug_info    0x00039185      0xd27 build/usbd_msc_data.o
- .debug_info    0x00039eac     0x27cd build/usbd_msc_scsi.o
- .debug_info    0x0003c679       0x22 build/startup_stm32l412xx.o
+.debug_info     0x00000000    0x3c69e
+ .debug_info    0x00000000     0x46cf build/main.o
+ .debug_info    0x000046cf     0x1016 build/stm32l4xx_it.o
+ .debug_info    0x000056e5     0x180f build/stm32l4xx_hal_msp.o
+ .debug_info    0x00006ef4     0x10b7 build/user_diskio.o
+ .debug_info    0x00007fab     0x1fc5 build/user_diskio_spi.o
+ .debug_info    0x00009f70     0x1146 build/fatfs.o
+ .debug_info    0x0000b0b6      0xd31 build/stm32l4xx_hal.o
+ .debug_info    0x0000bde7     0x1239 build/stm32l4xx_hal_rcc.o
+ .debug_info    0x0000d020     0x12a2 build/stm32l4xx_hal_rcc_ex.o
+ .debug_info    0x0000e2c2      0xb7b build/stm32l4xx_hal_gpio.o
+ .debug_info    0x0000ee3d      0xb22 build/stm32l4xx_hal_dma.o
+ .debug_info    0x0000f95f      0xdb7 build/stm32l4xx_hal_pwr_ex.o
+ .debug_info    0x00010716     0x1313 build/stm32l4xx_hal_cortex.o
+ .debug_info    0x00011a29     0x2520 build/stm32l4xx_hal_spi.o
+ .debug_info    0x00013f49     0x55f5 build/stm32l4xx_hal_uart.o
+ .debug_info    0x0001953e     0x133b build/stm32l4xx_hal_uart_ex.o
+ .debug_info    0x0001a879      0x848 build/system_stm32l4xx.o
+ .debug_info    0x0001b0c1     0x1a3b build/SPI_FRAM.o
+ .debug_info    0x0001cafc     0x10d8 build/diskio.o
+ .debug_info    0x0001dbd4     0x52be build/ff.o
+ .debug_info    0x00022e92     0x1025 build/ff_gen_drv.o
+ .debug_info    0x00023eb7      0x8ae build/stm32l4xx_hal_crc.o
+ .debug_info    0x00024765      0x5fb build/stm32l4xx_hal_crc_ex.o
+ .debug_info    0x00024d60     0x1fea build/stm32l4xx_hal_pcd.o
+ .debug_info    0x00026d4a      0xd08 build/stm32l4xx_hal_pcd_ex.o
+ .debug_info    0x00027a52     0x1fce build/stm32l4xx_ll_usb.o
+ .debug_info    0x00029a20     0x13f5 build/usb_device.o
+ .debug_info    0x0002ae15     0x128e build/usbd_desc.o
+ .debug_info    0x0002c0a3     0x19ee build/usbd_storage_if.o
+ .debug_info    0x0002da91     0x2f2e build/usbd_conf.o
+ .debug_info    0x000309bf     0x1b0d build/usbd_core.o
+ .debug_info    0x000324cc     0x1fba build/usbd_ctlreq.o
+ .debug_info    0x00034486     0x14f1 build/usbd_ioreq.o
+ .debug_info    0x00035977     0x1bf7 build/usbd_msc.o
+ .debug_info    0x0003756e     0x1c1a build/usbd_msc_bot.o
+ .debug_info    0x00039188      0xd27 build/usbd_msc_data.o
+ .debug_info    0x00039eaf     0x27cd build/usbd_msc_scsi.o
+ .debug_info    0x0003c67c       0x22 build/startup_stm32l412xx.o
 
 .debug_abbrev   0x00000000     0x6667
  .debug_abbrev  0x00000000      0x4b0 build/main.o
@@ -3100,43 +3100,43 @@ OUTPUT(build/SD_Logger_Test.elf elf32-littlearm)
  .debug_abbrev  0x0000629f      0x3b6 build/usbd_msc_scsi.o
  .debug_abbrev  0x00006655       0x12 build/startup_stm32l412xx.o
 
-.debug_loc      0x00000000    0x1fc01
- .debug_loc     0x00000000      0x805 build/main.o
- .debug_loc     0x00000805       0x60 build/stm32l4xx_it.o
- .debug_loc     0x00000865      0x27e build/stm32l4xx_hal_msp.o
- .debug_loc     0x00000ae3      0x281 build/user_diskio.o
- .debug_loc     0x00000d64      0xead build/user_diskio_spi.o
- .debug_loc     0x00001c11       0x20 build/fatfs.o
- .debug_loc     0x00001c31      0x26d build/stm32l4xx_hal.o
- .debug_loc     0x00001e9e      0xa43 build/stm32l4xx_hal_rcc.o
- .debug_loc     0x000028e1      0xfcc build/stm32l4xx_hal_rcc_ex.o
- .debug_loc     0x000038ad      0x3f4 build/stm32l4xx_hal_gpio.o
- .debug_loc     0x00003ca1      0x94e build/stm32l4xx_hal_dma.o
- .debug_loc     0x000045ef      0x857 build/stm32l4xx_hal_pwr_ex.o
- .debug_loc     0x00004e46      0x7d4 build/stm32l4xx_hal_cortex.o
- .debug_loc     0x0000561a     0x2781 build/stm32l4xx_hal_spi.o
- .debug_loc     0x00007d9b     0x52f0 build/stm32l4xx_hal_uart.o
- .debug_loc     0x0000d08b      0xd5f build/stm32l4xx_hal_uart_ex.o
- .debug_loc     0x0000ddea      0x100 build/system_stm32l4xx.o
- .debug_loc     0x0000deea      0x608 build/SPI_FRAM.o
- .debug_loc     0x0000e4f2      0x323 build/diskio.o
- .debug_loc     0x0000e815     0x5cd0 build/ff.o
- .debug_loc     0x000144e5      0x311 build/ff_gen_drv.o
- .debug_loc     0x000147f6      0x6d8 build/stm32l4xx_hal_crc.o
- .debug_loc     0x00014ece      0x1e1 build/stm32l4xx_hal_crc_ex.o
- .debug_loc     0x000150af     0x1988 build/stm32l4xx_hal_pcd.o
- .debug_loc     0x00016a37      0x2a2 build/stm32l4xx_hal_pcd_ex.o
- .debug_loc     0x00016cd9     0x1ae2 build/stm32l4xx_ll_usb.o
- .debug_loc     0x000187bb       0x20 build/usb_device.o
- .debug_loc     0x000187db      0x4a0 build/usbd_desc.o
- .debug_loc     0x00018c7b      0x2bb build/usbd_storage_if.o
- .debug_loc     0x00018f36     0x1177 build/usbd_conf.o
- .debug_loc     0x0001a0ad      0xdea build/usbd_core.o
- .debug_loc     0x0001ae97     0x18eb build/usbd_ctlreq.o
- .debug_loc     0x0001c782      0x398 build/usbd_ioreq.o
- .debug_loc     0x0001cb1a      0x702 build/usbd_msc.o
- .debug_loc     0x0001d21c      0x65b build/usbd_msc_bot.o
- .debug_loc     0x0001d877     0x238a build/usbd_msc_scsi.o
+.debug_loc      0x00000000    0x1fc39
+ .debug_loc     0x00000000      0x83d build/main.o
+ .debug_loc     0x0000083d       0x60 build/stm32l4xx_it.o
+ .debug_loc     0x0000089d      0x27e build/stm32l4xx_hal_msp.o
+ .debug_loc     0x00000b1b      0x281 build/user_diskio.o
+ .debug_loc     0x00000d9c      0xead build/user_diskio_spi.o
+ .debug_loc     0x00001c49       0x20 build/fatfs.o
+ .debug_loc     0x00001c69      0x26d build/stm32l4xx_hal.o
+ .debug_loc     0x00001ed6      0xa43 build/stm32l4xx_hal_rcc.o
+ .debug_loc     0x00002919      0xfcc build/stm32l4xx_hal_rcc_ex.o
+ .debug_loc     0x000038e5      0x3f4 build/stm32l4xx_hal_gpio.o
+ .debug_loc     0x00003cd9      0x94e build/stm32l4xx_hal_dma.o
+ .debug_loc     0x00004627      0x857 build/stm32l4xx_hal_pwr_ex.o
+ .debug_loc     0x00004e7e      0x7d4 build/stm32l4xx_hal_cortex.o
+ .debug_loc     0x00005652     0x2781 build/stm32l4xx_hal_spi.o
+ .debug_loc     0x00007dd3     0x52f0 build/stm32l4xx_hal_uart.o
+ .debug_loc     0x0000d0c3      0xd5f build/stm32l4xx_hal_uart_ex.o
+ .debug_loc     0x0000de22      0x100 build/system_stm32l4xx.o
+ .debug_loc     0x0000df22      0x608 build/SPI_FRAM.o
+ .debug_loc     0x0000e52a      0x323 build/diskio.o
+ .debug_loc     0x0000e84d     0x5cd0 build/ff.o
+ .debug_loc     0x0001451d      0x311 build/ff_gen_drv.o
+ .debug_loc     0x0001482e      0x6d8 build/stm32l4xx_hal_crc.o
+ .debug_loc     0x00014f06      0x1e1 build/stm32l4xx_hal_crc_ex.o
+ .debug_loc     0x000150e7     0x1988 build/stm32l4xx_hal_pcd.o
+ .debug_loc     0x00016a6f      0x2a2 build/stm32l4xx_hal_pcd_ex.o
+ .debug_loc     0x00016d11     0x1ae2 build/stm32l4xx_ll_usb.o
+ .debug_loc     0x000187f3       0x20 build/usb_device.o
+ .debug_loc     0x00018813      0x4a0 build/usbd_desc.o
+ .debug_loc     0x00018cb3      0x2bb build/usbd_storage_if.o
+ .debug_loc     0x00018f6e     0x1177 build/usbd_conf.o
+ .debug_loc     0x0001a0e5      0xdea build/usbd_core.o
+ .debug_loc     0x0001aecf     0x18eb build/usbd_ctlreq.o
+ .debug_loc     0x0001c7ba      0x398 build/usbd_ioreq.o
+ .debug_loc     0x0001cb52      0x702 build/usbd_msc.o
+ .debug_loc     0x0001d254      0x65b build/usbd_msc_bot.o
+ .debug_loc     0x0001d8af     0x238a build/usbd_msc_scsi.o
 
 .debug_aranges  0x00000000     0x17a8
  .debug_aranges
@@ -3255,122 +3255,122 @@ OUTPUT(build/SD_Logger_Test.elf elf32-littlearm)
  .debug_ranges  0x000018c0       0xb0 build/usbd_msc_scsi.o
  .debug_ranges  0x00001970       0x20 build/startup_stm32l412xx.o
 
-.debug_line     0x00000000    0x1dffd
- .debug_line    0x00000000      0xfa1 build/main.o
- .debug_line    0x00000fa1      0x33b build/stm32l4xx_it.o
- .debug_line    0x000012dc      0x4a5 build/stm32l4xx_hal_msp.o
- .debug_line    0x00001781      0x325 build/user_diskio.o
- .debug_line    0x00001aa6      0xcb5 build/user_diskio_spi.o
- .debug_line    0x0000275b      0x2e8 build/fatfs.o
- .debug_line    0x00002a43      0x5d5 build/stm32l4xx_hal.o
- .debug_line    0x00003018      0xfc6 build/stm32l4xx_hal_rcc.o
- .debug_line    0x00003fde      0xe05 build/stm32l4xx_hal_rcc_ex.o
- .debug_line    0x00004de3      0x6ab build/stm32l4xx_hal_gpio.o
- .debug_line    0x0000548e      0xa5b build/stm32l4xx_hal_dma.o
- .debug_line    0x00005ee9      0x96f build/stm32l4xx_hal_pwr_ex.o
- .debug_line    0x00006858      0x799 build/stm32l4xx_hal_cortex.o
- .debug_line    0x00006ff1     0x2901 build/stm32l4xx_hal_spi.o
- .debug_line    0x000098f2     0x5257 build/stm32l4xx_hal_uart.o
- .debug_line    0x0000eb49      0xb93 build/stm32l4xx_hal_uart_ex.o
- .debug_line    0x0000f6dc      0x2c9 build/system_stm32l4xx.o
- .debug_line    0x0000f9a5      0x64a build/SPI_FRAM.o
- .debug_line    0x0000ffef      0x382 build/diskio.o
- .debug_line    0x00010371     0x4286 build/ff.o
- .debug_line    0x000145f7      0x3c4 build/ff_gen_drv.o
- .debug_line    0x000149bb      0x65c build/stm32l4xx_hal_crc.o
- .debug_line    0x00015017      0x2d1 build/stm32l4xx_hal_crc_ex.o
- .debug_line    0x000152e8     0x19c6 build/stm32l4xx_hal_pcd.o
- .debug_line    0x00016cae      0x443 build/stm32l4xx_hal_pcd_ex.o
- .debug_line    0x000170f1     0x19bd build/stm32l4xx_ll_usb.o
- .debug_line    0x00018aae      0x356 build/usb_device.o
- .debug_line    0x00018e04      0x4c5 build/usbd_desc.o
- .debug_line    0x000192c9      0x43c build/usbd_storage_if.o
- .debug_line    0x00019705      0xa33 build/usbd_conf.o
- .debug_line    0x0001a138      0x9a3 build/usbd_core.o
- .debug_line    0x0001aadb      0xdfe build/usbd_ctlreq.o
- .debug_line    0x0001b8d9      0x3ef build/usbd_ioreq.o
- .debug_line    0x0001bcc8      0x6ce build/usbd_msc.o
- .debug_line    0x0001c396      0x6e3 build/usbd_msc_bot.o
- .debug_line    0x0001ca79      0x2b3 build/usbd_msc_data.o
- .debug_line    0x0001cd2c     0x125b build/usbd_msc_scsi.o
- .debug_line    0x0001df87       0x76 build/startup_stm32l412xx.o
+.debug_line     0x00000000    0x1e00b
+ .debug_line    0x00000000      0xfaf build/main.o
+ .debug_line    0x00000faf      0x33b build/stm32l4xx_it.o
+ .debug_line    0x000012ea      0x4a5 build/stm32l4xx_hal_msp.o
+ .debug_line    0x0000178f      0x325 build/user_diskio.o
+ .debug_line    0x00001ab4      0xcb5 build/user_diskio_spi.o
+ .debug_line    0x00002769      0x2e8 build/fatfs.o
+ .debug_line    0x00002a51      0x5d5 build/stm32l4xx_hal.o
+ .debug_line    0x00003026      0xfc6 build/stm32l4xx_hal_rcc.o
+ .debug_line    0x00003fec      0xe05 build/stm32l4xx_hal_rcc_ex.o
+ .debug_line    0x00004df1      0x6ab build/stm32l4xx_hal_gpio.o
+ .debug_line    0x0000549c      0xa5b build/stm32l4xx_hal_dma.o
+ .debug_line    0x00005ef7      0x96f build/stm32l4xx_hal_pwr_ex.o
+ .debug_line    0x00006866      0x799 build/stm32l4xx_hal_cortex.o
+ .debug_line    0x00006fff     0x2901 build/stm32l4xx_hal_spi.o
+ .debug_line    0x00009900     0x5257 build/stm32l4xx_hal_uart.o
+ .debug_line    0x0000eb57      0xb93 build/stm32l4xx_hal_uart_ex.o
+ .debug_line    0x0000f6ea      0x2c9 build/system_stm32l4xx.o
+ .debug_line    0x0000f9b3      0x64a build/SPI_FRAM.o
+ .debug_line    0x0000fffd      0x382 build/diskio.o
+ .debug_line    0x0001037f     0x4286 build/ff.o
+ .debug_line    0x00014605      0x3c4 build/ff_gen_drv.o
+ .debug_line    0x000149c9      0x65c build/stm32l4xx_hal_crc.o
+ .debug_line    0x00015025      0x2d1 build/stm32l4xx_hal_crc_ex.o
+ .debug_line    0x000152f6     0x19c6 build/stm32l4xx_hal_pcd.o
+ .debug_line    0x00016cbc      0x443 build/stm32l4xx_hal_pcd_ex.o
+ .debug_line    0x000170ff     0x19bd build/stm32l4xx_ll_usb.o
+ .debug_line    0x00018abc      0x356 build/usb_device.o
+ .debug_line    0x00018e12      0x4c5 build/usbd_desc.o
+ .debug_line    0x000192d7      0x43c build/usbd_storage_if.o
+ .debug_line    0x00019713      0xa33 build/usbd_conf.o
+ .debug_line    0x0001a146      0x9a3 build/usbd_core.o
+ .debug_line    0x0001aae9      0xdfe build/usbd_ctlreq.o
+ .debug_line    0x0001b8e7      0x3ef build/usbd_ioreq.o
+ .debug_line    0x0001bcd6      0x6ce build/usbd_msc.o
+ .debug_line    0x0001c3a4      0x6e3 build/usbd_msc_bot.o
+ .debug_line    0x0001ca87      0x2b3 build/usbd_msc_data.o
+ .debug_line    0x0001cd3a     0x125b build/usbd_msc_scsi.o
+ .debug_line    0x0001df95       0x76 build/startup_stm32l412xx.o
 
-.debug_str      0x00000000     0x6aeb
- .debug_str     0x00000000     0x1d34 build/main.o
-                               0x1f61 (size before relaxing)
- .debug_str     0x00001d34      0x3e7 build/stm32l4xx_it.o
+.debug_str      0x00000000     0x6af7
+ .debug_str     0x00000000     0x1d40 build/main.o
+                               0x1f6d (size before relaxing)
+ .debug_str     0x00001d40      0x3e7 build/stm32l4xx_it.o
                                 0xc58 (size before relaxing)
- .debug_str     0x0000211b      0x5a4 build/stm32l4xx_hal_msp.o
+ .debug_str     0x00002127      0x5a4 build/stm32l4xx_hal_msp.o
                                0x128a (size before relaxing)
- .debug_str     0x000026bf       0xb8 build/user_diskio.o
+ .debug_str     0x000026cb       0xb8 build/user_diskio.o
                                 0x98b (size before relaxing)
- .debug_str     0x00002777      0x12e build/user_diskio_spi.o
+ .debug_str     0x00002783      0x12e build/user_diskio_spi.o
                                 0xe2f (size before relaxing)
- .debug_str     0x000028a5       0x2f build/fatfs.o
+ .debug_str     0x000028b1       0x2f build/fatfs.o
                                 0xa08 (size before relaxing)
- .debug_str     0x000028d4      0x2c3 build/stm32l4xx_hal.o
+ .debug_str     0x000028e0      0x2c3 build/stm32l4xx_hal.o
                                 0xce2 (size before relaxing)
- .debug_str     0x00002b97      0x2b5 build/stm32l4xx_hal_rcc.o
+ .debug_str     0x00002ba3      0x2b5 build/stm32l4xx_hal_rcc.o
                                 0xaae (size before relaxing)
- .debug_str     0x00002e4c      0x433 build/stm32l4xx_hal_rcc_ex.o
+ .debug_str     0x00002e58      0x433 build/stm32l4xx_hal_rcc_ex.o
                                 0xce5 (size before relaxing)
- .debug_str     0x0000327f       0xc4 build/stm32l4xx_hal_gpio.o
+ .debug_str     0x0000328b       0xc4 build/stm32l4xx_hal_gpio.o
                                 0x7df (size before relaxing)
- .debug_str     0x00003343      0x25e build/stm32l4xx_hal_dma.o
+ .debug_str     0x0000334f      0x25e build/stm32l4xx_hal_dma.o
                                 0x8af (size before relaxing)
- .debug_str     0x000035a1      0x490 build/stm32l4xx_hal_pwr_ex.o
+ .debug_str     0x000035ad      0x490 build/stm32l4xx_hal_pwr_ex.o
                                 0xa92 (size before relaxing)
- .debug_str     0x00003a31      0x401 build/stm32l4xx_hal_cortex.o
+ .debug_str     0x00003a3d      0x401 build/stm32l4xx_hal_cortex.o
                                 0xd56 (size before relaxing)
- .debug_str     0x00003e32      0x534 build/stm32l4xx_hal_spi.o
+ .debug_str     0x00003e3e      0x534 build/stm32l4xx_hal_spi.o
                                 0xe2b (size before relaxing)
- .debug_str     0x00004366      0x736 build/stm32l4xx_hal_uart.o
+ .debug_str     0x00004372      0x736 build/stm32l4xx_hal_uart.o
                                0x122e (size before relaxing)
- .debug_str     0x00004a9c      0x15c build/stm32l4xx_hal_uart_ex.o
+ .debug_str     0x00004aa8      0x15c build/stm32l4xx_hal_uart_ex.o
                                 0xb62 (size before relaxing)
- .debug_str     0x00004bf8       0x3d build/system_stm32l4xx.o
+ .debug_str     0x00004c04       0x3d build/system_stm32l4xx.o
                                 0x631 (size before relaxing)
- .debug_str     0x00004c35      0x10a build/SPI_FRAM.o
+ .debug_str     0x00004c41      0x10a build/SPI_FRAM.o
                                 0xe24 (size before relaxing)
- .debug_str     0x00004d3f       0x4f build/diskio.o
+ .debug_str     0x00004d4b       0x4f build/diskio.o
                                 0x933 (size before relaxing)
- .debug_str     0x00004d8e      0x37e build/ff.o
+ .debug_str     0x00004d9a      0x37e build/ff.o
                                 0xebb (size before relaxing)
- .debug_str     0x0000510c       0x7b build/ff_gen_drv.o
+ .debug_str     0x00005118       0x7b build/ff_gen_drv.o
                                 0x984 (size before relaxing)
- .debug_str     0x00005187       0xc8 build/stm32l4xx_hal_crc.o
+ .debug_str     0x00005193       0xc8 build/stm32l4xx_hal_crc.o
                                 0x6fa (size before relaxing)
- .debug_str     0x0000524f       0xa1 build/stm32l4xx_hal_crc_ex.o
+ .debug_str     0x0000525b       0xa1 build/stm32l4xx_hal_crc_ex.o
                                 0x6b4 (size before relaxing)
- .debug_str     0x000052f0      0x590 build/stm32l4xx_hal_pcd.o
+ .debug_str     0x000052fc      0x590 build/stm32l4xx_hal_pcd.o
                                 0xda4 (size before relaxing)
- .debug_str     0x00005880      0x196 build/stm32l4xx_hal_pcd_ex.o
+ .debug_str     0x0000588c      0x196 build/stm32l4xx_hal_pcd_ex.o
                                 0xa00 (size before relaxing)
- .debug_str     0x00005a16      0x131 build/stm32l4xx_ll_usb.o
+ .debug_str     0x00005a22      0x131 build/stm32l4xx_ll_usb.o
                                 0x9d4 (size before relaxing)
- .debug_str     0x00005b47      0x116 build/usb_device.o
+ .debug_str     0x00005b53      0x116 build/usb_device.o
                                 0xd43 (size before relaxing)
- .debug_str     0x00005c5d      0x1ab build/usbd_desc.o
+ .debug_str     0x00005c69      0x1ab build/usbd_desc.o
                                 0xb10 (size before relaxing)
- .debug_str     0x00005e08      0x138 build/usbd_storage_if.o
+ .debug_str     0x00005e14      0x138 build/usbd_storage_if.o
                                0x1060 (size before relaxing)
- .debug_str     0x00005f40      0x27b build/usbd_conf.o
+ .debug_str     0x00005f4c      0x27b build/usbd_conf.o
                                0x1c41 (size before relaxing)
- .debug_str     0x000061bb      0x13e build/usbd_core.o
+ .debug_str     0x000061c7      0x13e build/usbd_core.o
                                 0xef5 (size before relaxing)
- .debug_str     0x000062f9      0x109 build/usbd_ctlreq.o
+ .debug_str     0x00006305      0x109 build/usbd_ctlreq.o
                                 0xe47 (size before relaxing)
- .debug_str     0x00006402       0x60 build/usbd_ioreq.o
+ .debug_str     0x0000640e       0x60 build/usbd_ioreq.o
                                 0xd3c (size before relaxing)
- .debug_str     0x00006462      0x35c build/usbd_msc.o
+ .debug_str     0x0000646e      0x35c build/usbd_msc.o
                                0x10a4 (size before relaxing)
- .debug_str     0x000067be       0xb1 build/usbd_msc_bot.o
+ .debug_str     0x000067ca       0xb1 build/usbd_msc_bot.o
                                 0xf94 (size before relaxing)
- .debug_str     0x0000686f       0xa1 build/usbd_msc_data.o
+ .debug_str     0x0000687b       0xa1 build/usbd_msc_data.o
                                 0x8be (size before relaxing)
- .debug_str     0x00006910      0x1b7 build/usbd_msc_scsi.o
+ .debug_str     0x0000691c      0x1b7 build/usbd_msc_scsi.o
                                0x1080 (size before relaxing)
- .debug_str     0x00006ac7       0x24 build/startup_stm32l412xx.o
+ .debug_str     0x00006ad3       0x24 build/startup_stm32l412xx.o
                                  0x6a (size before relaxing)
 
 .comment        0x00000000       0x79
