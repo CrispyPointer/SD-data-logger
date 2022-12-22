@@ -2,7 +2,7 @@
 /**
   ******************************************************************************
   * @file           : main.c
-  * @brief          : Main program for SODAQ LOGGER
+  * @brief          : Main program of the SODAQ LOGGER
   * @author         : Phuoc K. Ly
   * @version        : 0.1
   ******************************************************************************
@@ -15,11 +15,34 @@
   * in the root directory of this software component.
   * If no LICENSE file comes with this software, it is provided AS-IS.
   *
-  ******************************************************************************
+  *  This software is a free software and there is NO WARRANTY.
+  *  No restriction on use. You can use, modify and redistribute it for
+  *  personal, non-profit or commercial products UNDER YOUR RESPONSIBILITY.
+  *  Redistributions of source code must retain the above copyright notice.
+  *
   */
 
 /*  
-    This program was developed by Phuoc K. Ly (SODAQ) for a low power logging device using the STM32L412 MCU
+    This copywrited (C) program was developed by Phuoc K. Ly (SODAQ) for a low power logging device using the STM32L412 MCU with external FRAM and SD card
+    The main program is available at https://github.com/phuocly2304/SD_Logger
+    This file provide all the main functions of the SODAQ Logger. 
+
+    SODAQ Logger is a simple but low power serial logger based on the STM32L412CBT6P running at 48MHz. 
+    The purpose of this logger was to create an easy to use logger to assist all the Quality Assurance tasks
+
+    SODAQ Logger works with an external 64KB FRAM and an 512MB XTX SD card. By default, the logger UART runs at 115200bps
+    
+    Two most important characteristics of the SODAQ Logger is the low power aspect and the ability to become a USB stick 
+    so the users can easily extract all the data directly on the device.
+
+    22µA idle current consumption (When the device is not receiving any UART message)
+    6mA actively buffering data to FRAM
+    30mA actively writing from FRAM to SD Card. 
+
+    Input Voltage on can either be 3.3V directly to 3V3 pin or up to 6.5V. Input Voltage on RX-I pin must not exceed 6V.
+
+    In order to extract data from the logger. Use a 10P Distance Test Stand Pcb Clip Clamp Fixture to clip on it.
+    Note that a separated 3.3 - 5V must be apply on the Vbus pin to trigger the USB function.
 */
 
 /* USER CODE END Header */
@@ -40,27 +63,33 @@
 /* USER CODE BEGIN PTD */
 
 #define DEBUG 1 //Define debug mode
+
 //#define RESET_FRAM 1
 /*************************************************FRAM ADDRESS CONFIG*****************************************************/
 //External FRAM locations for user settings
 #define LOCATION_FILE_NUMBER_LSB 0x03       //16-bit value LSB for file location number
 #define LOCATION_FILE_NUMBER_MSB 0x04       //16-bit value MSB for file location number
 
-#define USB_DETECT 0x05                     //Detect if USB is plug in or not
+#define LOGGER_CONFIGURATION_ 0x05          //
 #define LAST_SYNC_POSITION 0x06             //Position of the last character captured
 #define BUFFER_STAT 0x07                    //0 if no message left in the buffer -- 1 if buffer is still going but not write to SD or power off during logging process
 
-#define SYNC_BUFFER_MSB 0x08
-#define SYNC_BUFFER_MSB2 0x09
-#define SYNC_BUFFER_LSB 0x0A
+/*---------------24 bit value of the FRAM Iterator address from the last logging ----------------*/
+#define SYNC_BUFFER_MSB 0x08                //First 8 MSB of the Iterator value
+#define SYNC_BUFFER_MSB2 0x09               //Second 8 bits of the Iterator
+#define SYNC_BUFFER_LSB 0x0A                //Last 8 LSB of the Iterator
+/*-----------------------------------------------------------------------------------------------*/
+// #define LOCATION_BAUD_SETTING_HIGH 0x0B                     
+// #define LOCATION_BAUD_SETTING_MID 0x0C
+// #define LOCATION_BAUD_SETTING_LOW 0x0D
 
-#define USB_DETECT 0x0B                     //Detect USB Plug in
+// #define LOCATION_LOGGER_RESTORE 0x0E
 
 #define LOCATION_BUFFER_START 20            //Address of start position when buffering
 #define LOCATION_BUFFER_END 0x3ff70         //Address of end position when buffering (260000)
-
 /*****************************************************************************************************************/
 
+/********************************LOGGER STATUS*****************************************************/
 typedef enum{
   LOGGER_INIT,
   BUFFER_SYNC_,
@@ -73,6 +102,10 @@ typedef enum{
   USER_CONFIG
 }LOGGER_STAT;
 
+typedef enum{
+  ERROR_SD_INIT = 2,
+}LOGGER_ERROR;
+/*************************************************************************************************/
 
 /* USER CODE END PTD */
 
@@ -110,13 +143,14 @@ uint8_t BOARD_POWER_UP = 1;       //First time power up the board -- create a ne
 uint8_t SD_MOUNT_FAIL = 0;        //Number of mount fail -- 3 times then error-handler
 /*****************************************************************************************************************/
 
-/*************************************************FRAM CONFIGURATION*****************************************************/
+/*************************************************LOGGER CONFIGURATION*****************************************************/
 uint32_t LOCATION_BUFFER_ITERATOR = LOCATION_BUFFER_START;        // Iterator to the current position of the buffer 
 static char newFileName[13];                                      // Create new file name based on the available log spot
-
+const char *CFG_FILENAME = "config.txt";                          //This is the name of the file that contains the unit settings
+long Current_System_Baud = 0;
 /*****************************************************************************************************************/
 
-/*************************************************USER DEFINE*****************************************************/
+/*************************************************USER DEFINE BUFFER SIZE AND TIMEOUT*****************************************************/
 static const unsigned int BUFFER_MAX = 100;                             //User define max buffer from 20 to 262000 
 static const uint32_t MAX_IDLE_TIME_MSEC = 1000;                        //User define timeout before going low power
 /*****************************************************************************************************************/
@@ -139,10 +173,12 @@ static void MX_CRC_Init(void);
 static void turn_off_spi_SD(void);
 static void turn_off_spi_FRAM(void);
 
+// void LoggerSetting(void);
 void myprintf(const char *fmt, ...);
-void appendDATA();
 void Stop_Mode_Entry(void);
-void SD_error(void);
+void System_error(LOGGER_ERROR Error_type);
+void appendDATA();
+
 char* newLog(LOGGER_STAT stat);
 uint8_t appendFile(char* fileName);
 uint8_t buffer_sync(int* Buffer_Iterator, LOGGER_STAT stat);
@@ -576,29 +612,31 @@ uint8_t appendFile(char* fileName){
   return 0;
 }
 
-/*Blink leds when SD mount error*/
-void SD_error(){
+/*Blink leds when system receive error based on error type*/
+void System_error(LOGGER_ERROR Error_type){
   while(1){
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, SET);
-    HAL_Delay(100);
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, RESET);
-    HAL_Delay(100);
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, SET);
-    HAL_Delay(100);
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, RESET);
-    HAL_Delay(100);
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, SET);
-    HAL_Delay(1000);
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, RESET);
-    HAL_Delay(1000);
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, SET);
-    HAL_Delay(1000);
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, RESET);
-    HAL_Delay(1000);
+    for(int index = 0; index < Error_type; index++){
+      HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, SET);
+      HAL_Delay(200);
+      HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, RESET);
+      HAL_Delay(200);
+    }
+
+    HAL_Delay(2000);
   }
 }
 /* USER CODE END 0 */
 
+/*!
+ *  @brief  Synchronize the Buffer iterator after every buffer action
+ *          On booting up, the logger will check this function status.
+ *  @param  Buffer_Iterator To store the current buffer iterator position after 
+ *  @param  stat  Current status for the logger || LOGGER_INIT: Check for Logger current status. 
+ * If stat is BUFFER_SYNC than previous logging still have remain data in the buffer, the logger will sync all the data to the previous log file.
+ * || BUFFER_SYNC: Save current iterator in to buffer
+ * || SD_DONE: Done writing to the SD
+ *  @retval None
+ */
 uint8_t buffer_sync(int* Buffer_Iterator, LOGGER_STAT stat){
   switch (stat)
   {
