@@ -1,0 +1,74 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Clean",
+            "command": "make",
+            "args": [
+                "clean",
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Clean build folder"
+        },
+        {
+            "type": "shell",
+            "label": "Build (debug)",
+            "command": "make",
+            "args": [
+                "all",
+                "DEBUG=1",
+                "-j10"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Build debug version"
+        },
+        {
+            "type": "shell",
+            "label": "Build",
+            "command": "make",
+            "args": [
+                "all",
+                "DEBUG=0",
+                "-j10"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Build normal version"
+        },
+        {
+            "type": "shell",
+            "label": "Flash",
+            "command": "STM32_Programmer_CLI",
+            "args": [
+                "-c port=SWD -w build/SD_Logger_Test.hex -rst"
+            ],
+            "detail": "Flash firmware on device"
+        },
+        {
+            "label": "Build & Flash debug",
+            "group": "build",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Clean",
+                "Build (debug)",
+                "Flash"
+            ],
+        },
+        {
+            "label": "Build & Flash normally",
+            "group": "build",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Clean",
+                "Build",
+                "Flash"
+            ],
+        }
+    ],
+    "version": "2.0.0"
+}

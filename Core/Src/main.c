@@ -28,7 +28,7 @@
     This file provide all the main functions of the SODAQ Logger. 
 
     SODAQ Logger is a simple but low power serial logger based on the STM32L412CBT6P running at 48MHz. 
-    The purpose of this logger was to create an easy to use logger to assist all the Quality Assurance tasks
+    The purpose of this logger was to create an easy to use logging device to assist all the Quality Assurance tasks
 
     SODAQ Logger works with an external 64KB FRAM and an 512MB XTX SD card. By default, the logger UART runs at 115200bps
     
@@ -62,17 +62,24 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-#define DEBUG 1 //Define debug mode
+#ifdef DEBUG
+  #warning "You are running a debug build!"
+#endif
 
-//#define RESET_FRAM 1
+#define VERSION "v1.0"
+
+//#define LOGGER_RESET 1
 /*************************************************FRAM ADDRESS CONFIG*****************************************************/
 //External FRAM locations for user settings
+#define DEVICE_ID_LOCATION  0x02            //Each logger will be assigned a unique ID
+
 #define LOCATION_FILE_NUMBER_LSB 0x03       //16-bit value LSB for file location number
 #define LOCATION_FILE_NUMBER_MSB 0x04       //16-bit value MSB for file location number
 
-#define LOGGER_CONFIGURATION_ 0x05          //
-#define LAST_SYNC_POSITION 0x06             //Position of the last character captured
-#define BUFFER_STAT 0x07                    //0 if no message left in the buffer -- 1 if buffer is still going but not write to SD or power off during logging process
+#define BAUD_LSB_LOCATION 0x05              //16-bit value LSB for Logger baudrate
+#define BAUD_MSB_LOCATION 0x06              //16-bit value MSB for Logger baudrate
+
+#define LOGGER_STAT_LOCATION 0x07           //Logger status location
 
 /*---------------24 bit value of the FRAM Iterator address from the last logging ----------------*/
 #define SYNC_BUFFER_MSB 0x08                //First 8 MSB of the Iterator value
@@ -89,7 +96,7 @@
 #define LOCATION_BUFFER_END 0x3ff70         //Address of end position when buffering (260000)
 /*****************************************************************************************************************/
 
-/********************************LOGGER STATUS*****************************************************/
+/********************************LOGGER STATUS & ERROR*****************************************************/
 typedef enum{
   LOGGER_INIT,
   BUFFER_SYNC_,
@@ -103,7 +110,8 @@ typedef enum{
 }LOGGER_STAT;
 
 typedef enum{
-  ERROR_SD_INIT = 2,
+  ERROR_SD_INIT = 2,  //blink LED 2 times a second if SD card is mounted fail.
+  LOGGER_RESET
 }LOGGER_ERROR;
 /*************************************************************************************************/
 
@@ -151,8 +159,12 @@ long Current_System_Baud = 0;
 /*****************************************************************************************************************/
 
 /*************************************************USER DEFINE BUFFER SIZE AND TIMEOUT*****************************************************/
-static const unsigned int BUFFER_MAX = 100;                             //User define max buffer from 20 to 262000 
-static const uint32_t MAX_IDLE_TIME_MSEC = 1000;                        //User define timeout before going low power
+#ifdef DEBUG
+  static const unsigned int BUFFER_MAX = 300;                             //User define max buffer 200 characters for debugging 
+#else
+  static const unsigned int BUFFER_MAX = 250000;                             //User define max buffer from 20 to 262000
+#endif  
+static const uint32_t MAX_IDLE_TIME_MSEC = 300;                        //User define timeout before going low power
 /*****************************************************************************************************************/
 
 //Some variables for FatFs
@@ -183,6 +195,8 @@ char* newLog(LOGGER_STAT stat);
 uint8_t appendFile(char* fileName);
 uint8_t buffer_sync(int* Buffer_Iterator, LOGGER_STAT stat);
 uint8_t USB_init(LOGGER_STAT stat);
+uint8_t Logger_Config(void);
+uint8_t Logger_Reset(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -219,6 +233,15 @@ uint8_t USB_init(LOGGER_STAT stat){
     USB_Flag = 1;
   }
   return LOGGER_INIT;
+}
+
+/*!
+* @brief Congig parameters for the logger based on the config.txt file inside the SD. If there is no config.txt file, default parameters will be apply.
+* @param None
+* @retval Logger status
+*/
+uint8_t Logger_config(void){
+
 }
 
 /*!
@@ -261,11 +284,11 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t size){
     HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, SET);
     RX_Flag = 1;
   }
+  /*In case the logger is transferring data from buffer to SD, concatenate UART data to a back up variable*/
   else{
     HAL_UARTEx_ReceiveToIdle_IT(&huart2, (uint8_t *)Rx_data, sizeof(Rx_data));
-    //strcat(Rx_back_up, Rx_data);
     strcat(Rx_back_up, Rx_data);
-    memset(Rx_data,0,sizeof(Rx_data));  //This mean the SD is writing and we should store data else where or ignore it?! 
+    memset(Rx_data,0,sizeof(Rx_data)); //Reset this variable
     RX_Flag = 1;
     RX_BACKUP_Flag = 1;
   }
@@ -337,7 +360,7 @@ char* newLog(LOGGER_STAT stat){
       SD_MOUNT_FAIL++;
       if(SD_MOUNT_FAIL == 4) 
       SD_Flag = 0;
-      Error_Handler();
+      System_error(ERROR_SD_INIT);
       //return;
     }
     myprintf("f_mount error (%i)\r\n Will try again for 5 times in 0.5 seconds\n", fres);
@@ -481,7 +504,7 @@ void appendDATA(){
         myprintf("Updated iterator: %d\n", LOCATION_BUFFER_ITERATOR);
         myprintf("Start synchronizing...\n");
       #endif   
-      if(buffer_sync(&LOCATION_BUFFER_ITERATOR, BUFFER_SYNC_) == BUFFER_OK) myprintf("Success in synchronizing!!\n");
+      if(buffer_sync(&LOCATION_BUFFER_ITERATOR, BUFFER_SYNC_) == BUFFER_OK) myprintf("Sync_OK!\n");
       HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, RESET);
       RX_Flag = 0;                      //Reset RX_IT flag
       
@@ -500,7 +523,7 @@ void appendDATA(){
       #ifdef DEBUG
         myprintf("Updated iterator from back up: %d\n", LOCATION_BUFFER_ITERATOR);
       #endif
-      if(buffer_sync(&LOCATION_BUFFER_ITERATOR, BUFFER_SYNC_) == BUFFER_OK) myprintf("Success in synchronizing from back up!!\n");   
+      if(buffer_sync(&LOCATION_BUFFER_ITERATOR, BUFFER_SYNC_) == BUFFER_OK) myprintf("BACK_UP_sync_OK!!\n");   
       RX_Flag = 0; 
       RX_BACKUP_Flag = 0;               //Reset RX_IT flag
       /*If buffer exceed max capacity -- write to SD*/
@@ -601,7 +624,6 @@ uint8_t appendFile(char* fileName){
     myprintf("FATFS Unlinked fail!!");
     Error_Handler();
   }
-  else myprintf("FATFS Unlink success\n");
   f_mount(NULL, FATPATH, 0);
   /*We're also done with FRAM, let's reset the iterator*/
   LOCATION_BUFFER_ITERATOR = LOCATION_BUFFER_START;
@@ -609,6 +631,7 @@ uint8_t appendFile(char* fileName){
   /*Don't forget to turn off the power after using :) */
   turn_off_spi_SD();
   HAL_GPIO_WritePin(SD_EN_GPIO_Port, SD_EN_Pin, RESET);
+  myprintf("SD_OK!\n");
   return 0;
 }
 
@@ -643,7 +666,7 @@ uint8_t buffer_sync(int* Buffer_Iterator, LOGGER_STAT stat){
   case LOGGER_INIT:
     FRAM_sleepEnable(false);
     uint32_t _update_iterator = 0;
-    uint8_t stat_check = FRAM_read8(BUFFER_STAT);
+    uint8_t stat_check = FRAM_read8(LOGGER_STAT_LOCATION);
     if (stat_check == SD_DONE || stat_check == BUFFER_OK || stat_check == BUFFER_SYNC_DONE){
       #ifdef DEBUG
         myprintf("Done synchronizing.!!\n");
@@ -664,7 +687,7 @@ uint8_t buffer_sync(int* Buffer_Iterator, LOGGER_STAT stat){
       #endif
       appendFile(newLog(BUFFER_SYNC_));
       FRAM_writeEnable(true);
-      FRAM_write8((uint8_t)BUFFER_STAT, BUFFER_SYNC_DONE);
+      FRAM_write8((uint8_t)LOGGER_STAT_LOCATION, BUFFER_SYNC_DONE);
       FRAM_writeEnable(false);
       return BUFFER_SYNC_DONE;
     }
@@ -682,13 +705,13 @@ uint8_t buffer_sync(int* Buffer_Iterator, LOGGER_STAT stat){
     FRAM_write8(SYNC_BUFFER_LSB, _location);
 
     /*Update logger Status*/
-    FRAM_write8((uint8_t)BUFFER_STAT, (uint8_t)BUFFER_SYNC_);
+    FRAM_write8((uint8_t)LOGGER_STAT_LOCATION, (uint8_t)BUFFER_SYNC_);
     FRAM_writeEnable(false);
     break;
 
   case SD_DONE:
     FRAM_writeEnable(true);
-    FRAM_write8((uint8_t)BUFFER_STAT, SD_DONE);
+    FRAM_write8((uint8_t)LOGGER_STAT_LOCATION, SD_DONE);
     FRAM_writeEnable(true);
     return BUFFER_OK;
   break;
@@ -739,7 +762,7 @@ int main(void)
     myprintf("SPI FRAM begin error.. check your connection !!\n");
     while(1);
   }
-  else myprintf("Logger begin!!\n");
+  else myprintf("Logger init %s\n",VERSION);
   //uint8_t Logger_init_stat = FRAM_read8(BUFFER_STAT);
   #ifdef DEBUG
     uint8_t manufID;
@@ -749,13 +772,16 @@ int main(void)
     myprintf("product ID: 0x%X\n", prodID);
     myprintf("Current iterator: %d\n", LOCATION_BUFFER_ITERATOR);
   #endif
-  #ifdef RESET_FRAM
+  #ifdef LOGGER_RESET
     FRAM_writeEnable(true);
-    FRAM_write8((uint8_t)BUFFER_STAT, BUFFER_OK);
+    myprintf("FRAM Start reseting!\n");
+    FRAM_write8((uint8_t)LOGGER_STAT_LOCATION, BUFFER_OK);
+    FRAM_write8(DEVICE_ID_LOCATION, 0);
     FRAM_write8(LOCATION_FILE_NUMBER_LSB, 0);
     FRAM_write8(LOCATION_FILE_NUMBER_MSB, 0);
     FRAM_writeEnable(false);
-    SD_error();
+    myprintf("Logger has been reset sucessfully.. please reboot the device!\n");
+    System_error(LOGGER_RESET);
   #endif
   if(buffer_sync(NULL, LOGGER_INIT) == BUFFER_SYNC_DONE){
     #ifdef DEBUG
@@ -766,6 +792,7 @@ int main(void)
 
   if(HAL_GPIO_ReadPin(Vbus_Sense_GPIO_Port, Vbus_Sense_Pin)){
     HAL_Delay(500);
+    myprintf("Logger is in USB mode! Please connect to a USB port on the adapter\n");
     USB_init(USB_PLUGIN);  
   }
   else USB_init(USB_UNKNOWN);
@@ -775,6 +802,7 @@ int main(void)
     /*turn off SD NAND to save power*/
     turn_off_spi_SD();                
     HAL_GPIO_WritePin(SD_EN_GPIO_Port, SD_EN_Pin, RESET);
+    myprintf("<\n");
   }
   /* USER CODE END 2 */
 

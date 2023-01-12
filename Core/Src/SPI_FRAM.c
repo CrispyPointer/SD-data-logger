@@ -1,9 +1,11 @@
 /*!
  *  @file   SPI_FRAM.c
  *  @brief  This is a redistribution of the SPI_FRAM chip driver implemented on STM32L412xx MCU using HAL Driver.
- *  Phuoc K. Ly (SODAQ)
+ *  @author K. Ly (SODAQ)
+ *  @version 0.1
  ******************************************************************************
- *  Software License Agreement (BSD License)
+ * @attention 
+ * Software License Agreement (BSD License)
  *
  *  Portions copyright (c) 2013, Adafruit Industries, All rights reserved.
  *  Portioins copyright (c) 2022, phuocly2304, All rights reserved
